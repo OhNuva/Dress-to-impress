@@ -23,15 +23,15 @@ LIGHT_GRAY = (200, 200, 200)
 RED = (255, 0, 0)
 
 #png background file
-background_one = pygame.image.load("background_one.png")
+background_one = pygame.image.load("Images/background_one.png")
 background_one = pygame.transform.scale(background_one, (screen_width, screen_height))
-background_two = pygame.image.load("background_two.png")
+background_two = pygame.image.load("Images/background_two.png")
 background_two = pygame.transform.scale(background_two, (screen_width, screen_height))
-background_three = pygame.image.load("background_three.png")
+background_three = pygame.image.load("Images/background_three.png")
 background_three = pygame.transform.scale(background_three, (screen_width, screen_height))
-background_four = pygame.image.load("background_four.png")
+background_four = pygame.image.load("Images/background_four.png")
 background_four = pygame.transform.scale(background_four, (screen_width, screen_height))
-background_ranking = pygame.image.load("background_ranking.png")
+background_ranking = pygame.image.load("Images/background_ranking.png")
 background_ranking = pygame.transform.scale(background_ranking, (screen_width, screen_height))
 
 #define all the varibales here: 
@@ -116,39 +116,39 @@ male_profs = [michael, jordan, boxin]
 male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
 
 #shirts_png
-shirt1 = pygame.image.load("shirt1.png")
+shirt1 = pygame.image.load("Images/shirt1.png")
 shirt1 = pygame.transform.scale(shirt1, (140, 140))
 shirt2 = pygame.image.load("Images/shirt2.png")
 shirt2 = pygame.transform.scale(shirt2, (140, 140))
-shirt3 = pygame.image.load("shirt3.png")
+shirt3 = pygame.image.load("Images/shirt3.png")
 shirt3 = pygame.transform.scale(shirt3, (140, 140))
-shirt4 = pygame.image.load("shirt4.png")
+shirt4 = pygame.image.load("Images/shirt4.png")
 shirt4 = pygame.transform.scale(shirt4, (140, 140))
-shirt5 = pygame.image.load("shirt5.png")
+shirt5 = pygame.image.load("Images/shirt5.png")
 shirt5 = pygame.transform.scale(shirt5, (140, 140))
-shirt6 = pygame.image.load("shirt6.png")
+shirt6 = pygame.image.load("Images/shirt6.png")
 shirt6 = pygame.transform.scale(shirt6, (140, 140))
-shirt7 = pygame.image.load("shirt7.png")
+shirt7 = pygame.image.load("Images/shirt7.png")
 shirt7 = pygame.transform.scale(shirt7, (140, 140))
 
 #pants_png
-pants1 = pygame.image.load("pants1.png")
+pants1 = pygame.image.load("Images/pants1.png")
 pants1 = pygame.transform.scale(pants1, (160, 140))
 
 #shoes_png
-shoe1 = pygame.image.load("shoe1.png")
+shoe1 = pygame.image.load("Images/shoe1.png")
 shoe1 = pygame.transform.scale(shoe1, (140, 60))
-shoe2 = pygame.image.load("shoe2.png")
+shoe2 = pygame.image.load("Images/shoe2.png")
 shoe2 = pygame.transform.scale(shoe2, (140, 60))
-shoe3 = pygame.image.load("shoe3.png")
+shoe3 = pygame.image.load("Images/shoe3.png")
 shoe3 = pygame.transform.scale(shoe3, (140, 60))
 
 #hats_png
-hat1 = pygame.image.load("hat1.png")
+hat1 = pygame.image.load("Images/hat1.png")
 hat1 = pygame.transform.scale(hat1, (90, 70))
-hat2 = pygame.image.load("hat2.png")
+hat2 = pygame.image.load("Images/hat2.png")
 hat2 = pygame.transform.scale(hat2, (90, 70))
-hat3 = pygame.image.load("hat3.png")
+hat3 = pygame.image.load("Images/hat3.png")
 hat3 = pygame.transform.scale(hat3, (90,70))
 
 #lists of clothes
