@@ -162,6 +162,14 @@ shirt7 = pygame.transform.scale(shirt7, (140, 140))
 #pants_png
 pants1 = pygame.image.load("Images/pants1.png")
 pants1 = pygame.transform.scale(pants1, (160, 140))
+pants2 = pygame.image.load("images/pants2.png")
+pants2 = pygame.transform.scale(pants2, (160, 140))
+pants3 = pygame.image.load("images/pants3.png")
+pants3 = pygame.transform.scale(pants3, (160, 140))
+pants4 = pygame.image.load("images/pants4.png")
+pants4 = pygame.transform.scale(pants4, (160, 140))
+pants5 = pygame.image.load("images/pants5.png")
+pants5 = pygame.transform.scale(pants5, (160, 140))
 
 #shoes_png
 shoe1 = pygame.image.load("Images/shoe1.png")
