@@ -118,7 +118,7 @@ male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
 #shirts_png
 shirt1 = pygame.image.load("shirt1.png")
 shirt1 = pygame.transform.scale(shirt1, (140, 140))
-shirt2 = pygame.image.load("shirt2.png")
+shirt2 = pygame.image.load("Images/shirt2.png")
 shirt2 = pygame.transform.scale(shirt2, (140, 140))
 shirt3 = pygame.image.load("shirt3.png")
 shirt3 = pygame.transform.scale(shirt3, (140, 140))
@@ -148,6 +148,8 @@ hat1 = pygame.image.load("hat1.png")
 hat1 = pygame.transform.scale(hat1, (90, 70))
 hat2 = pygame.image.load("hat2.png")
 hat2 = pygame.transform.scale(hat2, (90, 70))
+hat3 = pygame.image.load("hat3.png")
+hat3 = pygame.transform.scale(hat3, (90,70))
 
 #lists of clothes
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
@@ -177,7 +179,7 @@ for i in range(1, 4):
     shoes_list.append(surf)
 
 #hats
-hat_list = [hat1, hat2]
+hat_list = [hat1, hat2, hat3]
 for i in range(1, 4):
     surf = pygame.image.load(f"hat{i}.png")
     surf = pygame.transform.scale(surf, (90, 70))
