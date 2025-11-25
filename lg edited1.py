@@ -107,8 +107,22 @@ def main():
             
             #character_page
             elif current_page == CHARACTER_PAGE:
-                if char_button
-            
+                
+                if selected_gender=="female":
+                    if pendar_button.is_clicked(event): 
+                        print("You selected Pendar Mahmoudi!!!")
+                    if comfort_button.is_clicked(event):
+                        print("You selected Comfort Mintah!")
+                    if dean_wells_button.is_clicked("You selected Dean Mary Wells!"):
+                
+                if selected_gender=="male":
+                    if tam_button.is_clicked(event):
+                        print("You selected Michael Tam!")
+                    if hamilton_button.is_clicked(event):
+                        print("You selected Jordan Hamilton!")
+                    if boxin_button.is_clicked(event):
+                        print("You selected Boxin Zhao!")
+                           
 
         # Images 
         #background for page 1
@@ -130,6 +144,23 @@ def main():
 
             male_button.draw(screen)
             female_button.draw(screen)
+        
+        #character selection page
+        elif current_page== CHARACTER_PAGE:
+            screen.fill((255, 240, 230))
+            title_font= pygame.font.SysFont("Arial",40)
+            title_text=title_font.render("Choose your Professor", True, BLACK)
+            screen.blit(title_text, (240, 150))
+            
+            if selected_gender=="female":
+                pendar_button.draw(screen)
+                comfort_button.draw(screen)
+                dean_wells_button.draw(screen)
+                
+            elif selected_gender == "male":
+                tam_button.draw(screen)
+                hamiltom_button.draw(screen)
+                boxin_button.draw(screen)
 
         pygame. display.update()
         #character selection page
