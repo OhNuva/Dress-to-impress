@@ -155,7 +155,7 @@ hat3 = pygame.transform.scale(hat3, (90,70))
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
 pants_list = [pants1]
 shoes_list = [shoe1, shoe2, shoe3]
-hats_list = [hat1, hat2]
+hats_list = [hat1, hat2, hat3]
 
 #shirts
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
