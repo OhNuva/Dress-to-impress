@@ -216,11 +216,11 @@ item_x_start = 40
 item_y_start = 60
 item_gap_x = 170
 #shirts
-for i in range(4):
+for i in range(8):
     button = Button(item_x_start + i*item_gap_x, item_y_start, 140, 140, f"S{i+1}", image=shirt_list[i])
     shirt_buttons.append(button)
 #pants
-for i in range(4):
+for i in range(6):
     button = Button(item_x_start + i*item_gap_x, item_y_start + 150, 160, 140, f"P{i+1}", image=pants_list[i])
     pants_buttons.append(button)
 #shoes
