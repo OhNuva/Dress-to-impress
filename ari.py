@@ -6,7 +6,15 @@ import random
 pygame.init()
 
 '''
-doc string please
+The following will provide the standard aspects of the game, including the width of the screen, height of the screen, and how the game should be displayed at the start. 
+>>> screen_width = 800
+800
+>>> screen_height = 600
+600
+>>> screen = pygame.display.set_mode((screen_width, screen_height))
+800, 600
+>>> pygame.display.set_caption("Start up Page")
+Start up Page #displayed in writing
 '''
 
 #screen size
@@ -14,6 +22,14 @@ screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Start Up Page")
+
+'''
+The following will introduce the backgrounds that will be used throughout the course of the game.
+>>> WHITE = (255, 255, 255)
+White #to the dimensions provided
+>>> background_one = pygame.image.load("Images/background_one.png")
+background_one #fit to the size of the screen provided previously 
+'''
 
 #colours
 WHITE = (255, 255, 255)
@@ -33,6 +49,12 @@ background_four = pygame.image.load("Images/background_four.png")
 background_four = pygame.transform.scale(background_four, (screen_width, screen_height))
 background_ranking = pygame.image.load("Images/background_ranking.png")
 background_ranking = pygame.transform.scale(background_ranking, (screen_width, screen_height))
+
+'''
+The following will define the variables needed in order for the game to perform properly.
+>>> ranking_score = None
+None #its the start of the game so theres no need for ranking
+'''
 
 #define all the varibales here: 
 ranking_score= None
@@ -73,6 +95,12 @@ class Button:
 
     def is_clicked(self, event):
         return event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos)
+
+'''
+The following will produce buttons that will be used throughout the game.
+>>> ranking_button = Button(300, 400, 200, 50, "Submit")
+
+'''
 
 #ranking button
 ranking_button = Button(300, 400, 200, 50, "Submit")
