@@ -292,6 +292,19 @@ pants_list = [pants1]
 shoes_list = [shoe1, shoe2, shoe3]
 hats_list = [hat1, hat2, hat3]
 
+'''
+The following loads and scales clothing pieces, putting them in their respective lists using filename patterns.
+#This allows the program to expand available clothing options without manually loading each image.
+>>> shirt_list : list [pygame. Surface]
+This loop loads the aforementioned shirt files, scales them, and appends them to the list.
+>>> pants_list : list [pygame. Surface]
+This loop loads the aforementioned pants files, scales them, and appends them to the list.
+>>> shoes_list : list [pygame. Surface]
+This loop loads the aforementioned shoe files, scales them, and appends them to the list.
+>>> hat_list : list [pygame. Surface]
+This loop loads the aforementioned hat files, scales them, and appends them to the list.
+'''
+
 #shirts
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
 for i in range(1, 8):
@@ -319,12 +332,41 @@ for i in range(1, 4):
     surf = pygame.image.load(f"hat{i}.png")
     surf = pygame.transform.scale(surf, (90, 70))
     hat_list.append(surf)
+    
+'''
+The following will store the selected clothing items. This storage helps determine which shirt, pants, shoes, and hat are displayed
+during the customization process.
+>>> current_shirt : pygame. Surface or None
+Displays the shirt currently selected for the mannequin. None means no shirt has been selected.
+>>> current_pants : pygame. Surface or None
+Displays the pants currently selected for the mannequin. None means no pants have been selected.
+>>> current_shoes : pygame. Surface or None
+Displays the shoes currently selected for the mannequin. None means no shoes have been selected.
+>>> current_hat : pygame. Surface or None
+Displays the hat currently selected for the mannequin. None means no hat has been selected.
+'''
 
 #status of clothing 
 current_shirt = None
 current_pants = None
 current_shoes = None
 current_hat = None
+
+'''
+The following will control the animation of the sliding closet menu used in the customization screen. The menu slides down from
+the top of the window when opened, and retracts when closed.
+>>> closet_open : bool
+Indicates whether the closet menu is open (True) or closed (False).
+>>> menu_height : int
+The height of the closet menu in pixels.
+>>> menu_y : int
+    The current vertical position of the menu. Initialized to `-menu_height`
+    so it starts completely offscreen above the top edge.
+
+menu_speed : int
+    The number of pixels the menu moves per frame during sliding animations.
+    Higher values make the menu open/close faster.
+'''
 
 #closet slide-down menu
 closet_open = False
