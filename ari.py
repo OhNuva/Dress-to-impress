@@ -308,28 +308,28 @@ This loop loads the aforementioned hat files, scales them, and appends them to t
 #shirts
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
 for i in range(1, 8):
-    surf = pygame.image.load(f"shirt{i}.png")
+    surf = pygame.image.load(f"Images/shirt{i}.png")
     surf = pygame.transform.scale(surf, (140, 140))
     shirt_list.append(surf)
 
 #pants
 pants_list = [pants1]
 for i in range(1, 6):
-    surf = pygame.image.load(f"pants{i}.png")
+    surf = pygame.image.load(f"Images/pants{i}.png")
     surf = pygame.transform.scale(surf, (160, 140))
     pants_list.append(surf)
 
 #shoes
 shoes_list = [shoe1, shoe2, shoe3]
 for i in range(1, 4):
-    surf = pygame.image.load(f"shoe{i}.png")
+    surf = pygame.image.load(f"Images/shoe{i}.png")
     surf = pygame.transform.scale(surf, (140, 60))
     shoes_list.append(surf)
 
 #hats
 hat_list = [hat1, hat2, hat3]
 for i in range(1, 4):
-    surf = pygame.image.load(f"hat{i}.png")
+    surf = pygame.image.load(f"Images/hat{i}.png")
     surf = pygame.transform.scale(surf, (90, 70))
     hat_list.append(surf)
     
