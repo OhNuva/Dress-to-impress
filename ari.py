@@ -139,19 +139,13 @@ The following will produce buttons that will be used throughout the game.
 >>> ranking_button : Button
 Used to illustrate the score of the outfit #(300, 400) with 200×50 pixels.
 >>> start_button : Button
-Navigates to the next screen, beginning the game #positioned at (250, 250).
+Navigates to the next screen, beginning the game, #positioned at (250, 250).
 >>> exit_button : Button
-Closes the application when clicked. Positioned next to the Start button
-at (470, 250) with a size of 200×50 pixels.
-
-male_button : Button
-    Allows users to select a male profile category or filter option.
-    Positioned at (200, 250) with dimensions 180×50 pixels.
-
-female_button : Button
-    Allows users to select a female profile category or filter option.
-    Positioned at (420, 250) with dimensions 180×50 pixels.
-
+Closes the game when clicked, #postitioned at (470, 250) with 200×50 pixels.
+>>> male_button : Button
+Allows users to select a male character, #positioned at (200, 250) with 180×50 pixels.
+>>> female_button : Button
+Allows users to select a female character, #positioned at (420, 250) with 180×50 pixels.
 '''
 
 #ranking button
@@ -165,12 +159,44 @@ exit_button  = Button(470, 250, 200, 50, "Exit")
 male_button   = Button(200, 250, 180, 50, "Male")
 female_button = Button(420, 250, 180, 50, "Female")
 
+'''
+The following are strings that introduce and represent various game pages that will be used throughout the game.
+>>> start_page : str
+The initial "start" screen.
+>>> gender_page : str
+The page where the user selects a gender option (Male/Female).
+>>> prof_page : str
+The professor selection page, where the user chooses from available professor avatars.
+>>> mannequin_page : str
+The page containing the outfit customization interface.
+>>> ranking_page : str
+The page that displays ranking results.
+'''
+
 #defining the pages
 start_page = "start"
 gender_page = "gender"
-ranking_page = "ranking"
 prof_page = "prof_selection"
 mannequin_page = "mannequin"
+ranking_page = "ranking"
+
+'''
+The following displays the professor avatars that may be chosen and the associated name of the professor.
+Each professor image is loaded from the `images/` directory and scaled to
+100×100 pixels for menu display.
+>>> pendar : pygame. Surface #female professor example
+Uploads a cartoon image of Professor Pendar Mahmoudi.
+>>> michael : pygame. Surface #male professor example
+Uploads a cartoon image of Professor Michael Tam.
+>>> female_profs : list [pygame. Surface]
+List of female professor images.
+>>> female_names : list [str]
+List of names associated with each image.
+>>> male_profs : list [pygame. Surface]
+List of male professor images.
+>>> male_names : list [str]
+List of corresponding names for each image.
+'''
 
 #professor_png
 #female professors
@@ -194,6 +220,27 @@ female_profs = [pendar, comfort, mary]
 female_names = ["Pendar Mahmoudi", "Comfort Mintah", "Mary Wells"]
 male_profs = [michael, jordan, boxin]
 male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
+
+'''
+The following will provide a list of clothing graphics that will be used for character customization during the game.
+All uplaods are loaded from the Images/ or images/ directory and scaled to consistent sizes for display.
+>>> shirt1–shirt7 : pygame. Surface
+A list of shirt graphics (seven), #scaled to 140x140 pixels.
+>>> pants1–pants5 : pygame. Surface
+A list of pant graphics (five), #scaled to 160×140 pixels.
+>>> shoe1–shoe3 : pygame. Surface
+A list of shoe graphics (three), #scaled to 140×60 pixels.
+>>> hat1–hat3 : pygame. Surface
+A list of hat/accessory graphics (three), #scaled to 90×70 pixels.
+>>> shirt_list : list [pygame. Surface]
+Contains all available shirt options.
+>>> pants_list : list [pygame. Surface]
+Contains all available pants options.
+>>> shoes_list : list [pygame. Surface]
+Contains all available shoe options.
+>>> hats_list : list [pygame. Surface]
+Contains all available hat options.
+'''
 
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
@@ -245,6 +292,19 @@ pants_list = [pants1]
 shoes_list = [shoe1, shoe2, shoe3]
 hats_list = [hat1, hat2, hat3]
 
+'''
+The following loads and scales clothing pieces, putting them in their respective lists using filename patterns.
+#This allows the program to expand available clothing options without manually loading each image.
+>>> shirt_list : list [pygame. Surface]
+This loop loads the aforementioned shirt files, scales them, and appends them to the list.
+>>> pants_list : list [pygame. Surface]
+This loop loads the aforementioned pants files, scales them, and appends them to the list.
+>>> shoes_list : list [pygame. Surface]
+This loop loads the aforementioned shoe files, scales them, and appends them to the list.
+>>> hat_list : list [pygame. Surface]
+This loop loads the aforementioned hat files, scales them, and appends them to the list.
+'''
+
 #shirts
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
 for i in range(1, 8):
@@ -272,12 +332,41 @@ for i in range(1, 4):
     surf = pygame.image.load(f"hat{i}.png")
     surf = pygame.transform.scale(surf, (90, 70))
     hat_list.append(surf)
+    
+'''
+The following will store the selected clothing items. This storage helps determine which shirt, pants, shoes, and hat are displayed
+during the customization process.
+>>> current_shirt : pygame. Surface or None
+Displays the shirt currently selected for the mannequin. None means no shirt has been selected.
+>>> current_pants : pygame. Surface or None
+Displays the pants currently selected for the mannequin. None means no pants have been selected.
+>>> current_shoes : pygame. Surface or None
+Displays the shoes currently selected for the mannequin. None means no shoes have been selected.
+>>> current_hat : pygame. Surface or None
+Displays the hat currently selected for the mannequin. None means no hat has been selected.
+'''
 
 #status of clothing 
 current_shirt = None
 current_pants = None
 current_shoes = None
 current_hat = None
+
+'''
+The following will control the animation of the sliding closet menu used in the customization screen. The menu slides down from
+the top of the window when opened, and retracts when closed.
+>>> closet_open : bool
+Indicates whether the closet menu is open (True) or closed (False).
+>>> menu_height : int
+The height of the closet menu in pixels.
+>>> menu_y : int
+    The current vertical position of the menu. Initialized to `-menu_height`
+    so it starts completely offscreen above the top edge.
+
+menu_speed : int
+    The number of pixels the menu moves per frame during sliding animations.
+    Higher values make the menu open/close faster.
+'''
 
 #closet slide-down menu
 closet_open = False
