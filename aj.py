@@ -94,7 +94,11 @@ exit_button  = Button(470, 250, 200, 50, "Exit")
 male_button   = Button(200, 250, 180, 50, "Male")
 female_button = Button(420, 250, 180, 50, "Female")
 
+<<<<<<< HEAD
 #defining the pages
+=======
+#definig the pages
+>>>>>>> 9a9ec61393186e6eb85edc46d04624608169738a
 start_page = "start"
 gender_page = "gender"
 ranking_page = "ranking"
@@ -103,6 +107,7 @@ mannequin_page = "mannequin"
 
 #professor_png
 #female professors
+<<<<<<< HEAD
 pendar = pygame.image.load("images/pendar_cartoon_trans.png")
 pendar = pygame.transform.scale(pendar, (100, 100))
 comfort = pygame.image.load("images/comfort_cartoon_trans.png")
@@ -116,6 +121,21 @@ michael = pygame.transform.scale(michael, (100, 100))
 jordan = pygame.image.load("images/jhammy_cartoon_trans.png")
 jordan = pygame.transform.scale(jordan, (100, 100))
 boxin = pygame.image.load("images/boxin_cartoon_trans.png")
+=======
+pendar = pygame.image.load("pendar.png")
+pendar = pygame.transform.scale(pendar, (100, 100))
+comfort = pygame.image.load("comfort.png")
+comfort = pygame.transform.scale(comfort, (100, 100))
+mary = pygame.image.load("mary.png")
+mary = pygame.transform.scale(mary, (100, 100))
+
+#male professors
+michael = pygame.image.load("michael.png")
+michael = pygame.transform.scale(michael, (100, 100))
+jordan = pygame.image.load("jordan.png")
+jordan = pygame.transform.scale(jordan, (100, 100))
+boxin = pygame.image.load("boxin.png")
+>>>>>>> 9a9ec61393186e6eb85edc46d04624608169738a
 boxin = pygame.transform.scale(boxin, (100, 100))
 
 #lists of all profs

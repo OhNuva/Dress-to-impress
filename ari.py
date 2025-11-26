@@ -387,6 +387,9 @@ def is_clicked_with_offset(button, event, offset_y):
     clicked = button.is_clicked(event)
     button.rect.y = old_y
     return clicked
+'''
+
+'''
 
 # main loop
 def main():
