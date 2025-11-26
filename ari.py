@@ -299,6 +299,20 @@ pants_buttons = []
 shoes_buttons = []
 hat_buttons = []
 
+'''
+The following block of code creates buttons for shirts, pants, shoes and hats and spaces them out on the wardrobe selection screen accordingly. 
+The starting x-position is at 40 pixels, the starting y-position is at 60 pixels, and the gap between each item (button) is 170 pixels.
+
+Each button is spaced apart horizontally by adding item_x_start to item_gap_x multiplied by the i.
+Each row is then spaced apart vertically by adding a fixed amount to the item_y_start value. 
+
+The arguments for buttons follow this structure: (item_x_start + i*item_gap_x, item_y_start) 
+
+>>>
+
+
+
+'''
 #Positions of clothing items inside the closet
 item_x_start = 40
 item_y_start = 60
