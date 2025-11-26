@@ -188,13 +188,13 @@ Each professor image is loaded from the `images/` directory and scaled to
 Uploads a cartoon image of Professor Pendar Mahmoudi.
 >>> michael : pygame. Surface #male professor example
 Uploads a cartoon image of Professor Michael Tam.
->>> female_profs : list [pygame. Surface]
+>>> female_profs : list[pygame.Surface]
 List of female professor images.
->>> female_names : list [str]
+>>> female_names : list[str]
 List of names associated with each image.
->>> male_profs : list [pygame. Surface]
+>>> male_profs : list[pygame.Surface]
 List of male professor images.
->>> male_names : list [str]
+>>> male_names : list[str]
 List of corresponding names for each image.
 '''
 
@@ -232,13 +232,13 @@ A list of pant graphics (five), #scaled to 160×140 pixels.
 A list of shoe graphics (three), #scaled to 140×60 pixels.
 >>> hat1–hat3 : pygame. Surface
 A list of hat/accessory graphics (three), #scaled to 90×70 pixels.
->>> shirt_list : list [pygame. Surface]
+>>> shirt_list : list[pygame.Surface]
 Contains all available shirt options.
->>> pants_list : list [pygame. Surface]
+>>> pants_list : list[pygame.Surface]
 Contains all available pants options.
->>> shoes_list : list [pygame. Surface]
+>>> shoes_list : list[pygame.Surface]
 Contains all available shoe options.
->>> hats_list : list [pygame. Surface]
+>>> hats_list : list[pygame.Surface]
 Contains all available hat options.
 '''
 
@@ -295,13 +295,13 @@ hats_list = [hat1, hat2, hat3]
 '''
 The following loads and scales clothing pieces, putting them in their respective lists using filename patterns.
 #This allows the program to expand available clothing options without manually loading each image.
->>> shirt_list : list [pygame. Surface]
+>>> shirt_list : list[pygame.Surface]
 This loop loads the aforementioned shirt files, scales them, and appends them to the list.
->>> pants_list : list [pygame. Surface]
+>>> pants_list : list[pygame.Surface]
 This loop loads the aforementioned pants files, scales them, and appends them to the list.
->>> shoes_list : list [pygame. Surface]
+>>> shoes_list : list[pygame.Surface]
 This loop loads the aforementioned shoe files, scales them, and appends them to the list.
->>> hat_list : list [pygame. Surface]
+>>> hat_list : list[pygame.Surface]
 This loop loads the aforementioned hat files, scales them, and appends them to the list.
 '''
 
@@ -360,12 +360,9 @@ Indicates whether the closet menu is open (True) or closed (False).
 >>> menu_height : int
 The height of the closet menu in pixels.
 >>> menu_y : int
-    The current vertical position of the menu. Initialized to `-menu_height`
-    so it starts completely offscreen above the top edge.
-
-menu_speed : int
-    The number of pixels the menu moves per frame during sliding animations.
-    Higher values make the menu open/close faster.
+The vertical position of the menu. #initialized to menu_height so it starts offscreen above the top edge.
+>>> menu_speed : int
+The number of pixels the menu moves per frame during sliding animations. #Higher values make the menu open/close faster.
 '''
 
 #closet slide-down menu
@@ -373,6 +370,29 @@ closet_open = False
 menu_height = 320
 menu_y = -menu_height  
 menu_speed = 18  #pixels
+
+'''
+The following indicates the buttons that will be used for interacting with the sliding closet menu and the lists that will
+store item buttons for each clothing type.
+>>> closet_button : type(button)
+The main toggle button that opens or closes the closet menu, #positioned at (650, 20) with 120×40 pixels.
+>>> shirts_cat_button : type(button)
+Displays the shirt category inside the closet menu, #positioned at (40, 10) relative to the top of the closet.
+>>> pants_cat_button : type(button)
+Displays the pants category inside the closet menu, #positioned at (220, 10) relative to the top of the closet.
+>>> shoes_cat_button : type(button)
+Displays the shoe category inside the closet menu, #positioned at (400, 10) relative to the top of the closet.
+>>> hats_cat_button : type(button)
+Displays the hat category inside the closet menu, #positioned at (40, 10) relative to the top of the closet.
+>>> shirt_buttons : list[Button]
+Will hold buttons representing each available shirt option.
+>>> pants_buttons : list[Button]
+Will hold buttons representing each available pair of pants.
+>>> shoes_buttons : list[Button]
+Will hold buttons for all available shoe options.
+>>> hat_buttons : list[Button]
+Will hold buttons for all available hat options.
+'''
 
 # Create closet and category buttons (positions will be used with offset)
 closet_button = Button(650, 20, 120, 40, "Closet")
