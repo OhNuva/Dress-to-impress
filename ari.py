@@ -6,15 +6,13 @@ import random
 pygame.init()
 
 '''
-The following will provide the standard aspects of the game, including the width of the screen, height of the screen, and how the game should be displayed at the start. 
->>> screen_width = 800
-800
->>> screen_height = 600
-600
->>> screen = pygame.display.set_mode((screen_width, screen_height))
-800, 600
->>> pygame.display.set_caption("Start up Page")
-Start up Page #displayed in writing
+The following will provide the standard aspects of the game, particularly the screen configuration. 
+>>> screen_width : int
+The width of the application window in pixels.
+>>> screen_height : int
+The height of the application window in pixels.
+>>> screen : pygame. Surface
+The main display surface returned by the function. #all drawing operations are rendered onto this surface.
 '''
 
 #screen size
@@ -24,11 +22,24 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Start Up Page")
 
 '''
-The following will introduce the backgrounds that will be used throughout the course of the game.
->>> WHITE = (255, 255, 255)
-White #to the dimensions provided
->>> background_one = pygame.image.load("Images/background_one.png")
-background_one #fit to the size of the screen provided previously 
+The following will  provide the colour constraints and backgrounds that will be used throughout the course of the game.
+>>> WHITE : tuple[int, int, int]
+Standard white color (255, 255, 255).
+>>> BLACK : tuple[int, int, int]
+Standard black color (0, 0, 0).
+>>> GRAY : tuple[int, int, int]
+Gray used for default button color (150, 150, 150).
+>>> LIGHT_GRAY : tuple[int, int, int]
+Light gray used for button hover effects (200, 200, 200).
+>>> RED : tuple[int, int, int]
+Standard red color (255, 0, 0).
+>>> background_one : pygame. Surface
+>>> background_two : pygame. Surface
+>>> background_three : pygame. Surface
+>>> background_four : pygame. Surface
+>>> background_ranking : pygame. Surface
+Background images that will be used for various screens in the game.
+#Each image is loaded from the Images/ directory and scaled to match the screen dimensions (`screen_width` × `screen_height`).
 '''
 
 #colours
@@ -78,11 +89,11 @@ in an Arial font and optionally stores an image that will be displayed above the
 The x-coordinate of the top-left corner of the button. #The same is to be said of the y, w, and h
 >>> text : str
 The text displayed on the button.
->>> font : pygame.
+>>> font : pygame
 The font used to render button text.
 >>> image : pygame. Surface, optional
 Optional image #image will be scaled proportionally to fit inside the button without distortion
->>> rect : pygame.
+>>> rect : pygame
 Rectangular area #of the button used for drawing and collision.
 >>> draw(surface):
 Draws the button onto the given surface, applying hover colour(s), scaling the image to fit, and placing text near the bottom.
@@ -125,6 +136,22 @@ class Button:
 
 '''
 The following will produce buttons that will be used throughout the game.
+>>> ranking_button : Button
+Used to illustrate the score of the outfit #(300, 400) with 200×50 pixels.
+>>> start_button : Button
+Navigates to the next screen, beginning the game #positioned at (250, 250).
+>>> exit_button : Button
+Closes the application when clicked. Positioned next to the Start button
+at (470, 250) with a size of 200×50 pixels.
+
+male_button : Button
+    Allows users to select a male profile category or filter option.
+    Positioned at (200, 250) with dimensions 180×50 pixels.
+
+female_button : Button
+    Allows users to select a female profile category or filter option.
+    Positioned at (420, 250) with dimensions 180×50 pixels.
+
 '''
 
 #ranking button
