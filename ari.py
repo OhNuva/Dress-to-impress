@@ -423,6 +423,7 @@ The arguments for buttons follow this structure: (item_x_start + i*item_gap_x, i
 
 '''
 #Positions of clothing items inside the closet
+#AD: Hi Linda! I would group this and the next function group in one docstring.
 item_x_start = 40
 item_y_start = 60
 item_gap_x = 170
@@ -450,6 +451,7 @@ shoes_open = False
 hats_open = False
 
 #Vertical offset buttons for the closet
+#AD: I would group these next two together in a doc string
 def draw_button_with_offset(button, offset_y):
     old_y = button.rect.y
     button.rect.y += offset_y
@@ -468,6 +470,7 @@ def is_clicked_with_offset(button, event, offset_y):
 '''
 
 # main loop
+#AD: This one should get its own. It should be detailed, but don't stress. It doesn't have to be excessive. The only thing I wouldn't include is the clock countdown, the quit part at the end, and name=main :)
 def main():
     global current_page, ranking_score, selected_prof, prof_list, prof_names
     global closet_open, menu_y, shirts_open, pants_open, shoes_open, hats_open
