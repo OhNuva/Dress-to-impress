@@ -139,19 +139,13 @@ The following will produce buttons that will be used throughout the game.
 >>> ranking_button : Button
 Used to illustrate the score of the outfit #(300, 400) with 200×50 pixels.
 >>> start_button : Button
-Navigates to the next screen, beginning the game #positioned at (250, 250).
+Navigates to the next screen, beginning the game, #positioned at (250, 250).
 >>> exit_button : Button
-Closes the application when clicked. Positioned next to the Start button
-at (470, 250) with a size of 200×50 pixels.
-
-male_button : Button
-    Allows users to select a male profile category or filter option.
-    Positioned at (200, 250) with dimensions 180×50 pixels.
-
-female_button : Button
-    Allows users to select a female profile category or filter option.
-    Positioned at (420, 250) with dimensions 180×50 pixels.
-
+Closes the game when clicked, #postitioned at (470, 250) with 200×50 pixels.
+>>> male_button : Button
+Allows users to select a male character, #positioned at (200, 250) with 180×50 pixels.
+>>> female_button : Button
+Allows users to select a female character, #positioned at (420, 250) with 180×50 pixels.
 '''
 
 #ranking button
@@ -165,12 +159,44 @@ exit_button  = Button(470, 250, 200, 50, "Exit")
 male_button   = Button(200, 250, 180, 50, "Male")
 female_button = Button(420, 250, 180, 50, "Female")
 
+'''
+The following are strings that introduce and represent various game pages that will be used throughout the game.
+>>> start_page : str
+The initial "start" screen.
+>>> gender_page : str
+The page where the user selects a gender option (Male/Female).
+>>> prof_page : str
+The professor selection page, where the user chooses from available professor avatars.
+>>> mannequin_page : str
+The page containing the outfit customization interface.
+>>> ranking_page : str
+The page that displays ranking results.
+'''
+
 #defining the pages
 start_page = "start"
 gender_page = "gender"
-ranking_page = "ranking"
 prof_page = "prof_selection"
 mannequin_page = "mannequin"
+ranking_page = "ranking"
+
+'''
+The following displays the professor avatars that may be chosen and the associated name of the professor.
+Each professor image is loaded from the `images/` directory and scaled to
+100×100 pixels for menu display.
+>>> pendar : pygame. Surface #female professor example
+Uploads a cartoon image of Professor Pendar Mahmoudi.
+>>> michael : pygame. Surface #male professor example
+Uploads a cartoon image of Professor Michael Tam.
+>>> female_profs : list [pygame. Surface]
+List of female professor images.
+>>> female_names : list [str]
+List of names associated with each image.
+>>> male_profs : list [pygame. Surface]
+List of male professor images.
+>>> male_names : list [str]
+List of corresponding names for each image.
+'''
 
 #professor_png
 #female professors
@@ -194,6 +220,27 @@ female_profs = [pendar, comfort, mary]
 female_names = ["Pendar Mahmoudi", "Comfort Mintah", "Mary Wells"]
 male_profs = [michael, jordan, boxin]
 male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
+
+'''
+The following will provide a list of clothing graphics that will be used for character customization during the game.
+All uplaods are loaded from the Images/ or images/ directory and scaled to consistent sizes for display.
+>>> shirt1–shirt7 : pygame. Surface
+A list of shirt graphics (seven), #scaled to 140x140 pixels.
+>>> pants1–pants5 : pygame. Surface
+A list of pant graphics (five), #scaled to 160×140 pixels.
+>>> shoe1–shoe3 : pygame. Surface
+A list of shoe graphics (three), #scaled to 140×60 pixels.
+>>> hat1–hat3 : pygame. Surface
+A list of hat/accessory graphics (three), #scaled to 90×70 pixels.
+>>> shirt_list : list [pygame. Surface]
+Contains all available shirt options.
+>>> pants_list : list [pygame. Surface]
+Contains all available pants options.
+>>> shoes_list : list [pygame. Surface]
+Contains all available shoe options.
+>>> hats_list : list [pygame. Surface]
+Contains all available hat options.
+'''
 
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
