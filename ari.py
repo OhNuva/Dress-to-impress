@@ -52,8 +52,16 @@ background_ranking = pygame.transform.scale(background_ranking, (screen_width, s
 
 '''
 The following will define the variables needed in order for the game to perform properly.
->>> ranking_score = None
-None #its the start of the game so theres no need for ranking
+>>> ranking_score : int or None
+Stores the users ranking score. #Initialized to None until a score is calculated.
+>>> current_page : str
+A string representing the current screen (e.g., "start", "menu", "results"). Defaults to "start".
+>>> selected_prof : object or None
+Holds the selected character. None means no profile has been chosen.
+>>> prof_list : list
+A list containing all professor names available to be selected in the game.
+>>> prof_names : list
+A list of professor names (strings).
 '''
 
 #define all the varibales here: 
@@ -62,6 +70,25 @@ current_page = "start"
 selected_prof = None
 prof_list = []
 prof_names = []
+
+'''
+The following function will create a rectangular button for the user to select. It will store the text
+in an Arial font and optionally stores an image that will be displayed above the text.
+>>> x : int
+The x-coordinate of the top-left corner of the button. #The same is to be said of the y, w, and h
+>>> text : str
+The text displayed on the button.
+>>> font : pygame.
+The font used to render button text.
+>>> image : pygame. Surface, optional
+Optional image #image will be scaled proportionally to fit inside the button without distortion
+>>> rect : pygame.
+Rectangular area #of the button used for drawing and collision.
+>>> draw(surface):
+Draws the button onto the given surface, applying hover colour(s), scaling the image to fit, and placing text near the bottom.
+>>>is_clicked(event):
+Returns True if the user pressed the mouse button while the cursor was inside the button.
+'''
 
 #define all classes here
 #button class type  
@@ -98,8 +125,6 @@ class Button:
 
 '''
 The following will produce buttons that will be used throughout the game.
->>> ranking_button = Button(300, 400, 200, 50, "Submit")
-
 '''
 
 #ranking button
