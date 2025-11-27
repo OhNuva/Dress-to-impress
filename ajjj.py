@@ -4,6 +4,10 @@ import random
 
 pygame.init()
 
+pygame.mixer.init()
+pygame.mixer.music.load('path/to/your/audio.wav')
+pygame.mixer.music.play()
+
 '''
 The following will provide the standard aspects of the game, particularly the screen configuration. 
 >>> screen_width : int
@@ -383,16 +387,32 @@ shoes_buttons = []
 hat_buttons = []
 
 '''
-The following block of code creates buttons for shirts, pants, shoes and hats and spaces them out on the wardrobe selection screen accordingly. 
-The starting x-position is at 40 pixels, the starting y-position is at 60 pixels, and the gap between each item (button) is 170 pixels.
+The following block of code generates and positions clothing item buttons for shirts, pants, shoes, hats in a
+two-column grid layout inside the closet interface.
 
-Each button is spaced apart horizontally by adding item_x_start to item_gap_x multiplied by the i.
-Each row is then spaced apart vertically by adding a fixed amount to the item_y_start value. 
+Each button is given the same statring positions, denoted by item_x_start and item_y_start, and these buttons are then offset using item_x_gap and item_y_gap.
 
-The arguments for buttons follow this structure: (item_x_start + i*item_gap_x, item_y_start) 
+Loops are used to create a button for every item in the respective clothing list (shirts, pants, hats or shoes). 
+The button column is determined by 'i % 2' for i in each respective list, so that if i is even the button will be sorted into the left column and if i is odd it will be
+sorted into the right column.
+The button row is then determined by '1//2', so that after every two items, the following button will move down to the next row, giving two buttons per row. 
 
->>>
+The row and column of each button is then converted into on-screen coordinates using the given starting x and y positions and x and y offsets. 
+The buttons are then created with their respective size (which varies depending on clothing type) and images, and these buttonsare appended to the corresponding 
+category button list. 
+
+Each clothing category has its own list (shirt_list, pants_list, etc.).
+For each item in the list:
+
+
+Example
+>>>If shirt_list has 4 items, the shirts are placed as:
+
+    (20, 280)      (180, 280)
+    (20, 460)      (180, 460)
+
 '''
+
 #Positions of clothing items inside the closet
 item_x_start = 20
 item_y_start = 280
@@ -436,6 +456,25 @@ shirts_open = False
 pants_open = False
 shoes_open = False
 hats_open = False
+
+'''
+The following functions are utility functions that temporarily visually shift a button and check to see if the space where the shifted button occupies is clicked.
+This essentially mimics the effect of actually shifting and moving every button, allowing the buttons to still be clickable, but without the additional complications this would cause.
+
+draw_button_with_offset(button, offset_y) draws the existing button with a horizontal offset of offset_y and then restores it to its original position. \
+This will be used to visually shift buttons when the clost panel slides.
+
+is_clicked_with_offset(button,event,offset_y) checks to see if the visually shifted button is clicked on and uses the same offset_y as in draw_button_with_offset so the
+clickable area matches what the player sees. 
+
+>>>Closet panel is slid 200 pixels to the right
+for b in shirt_buttons:
+    draw_button_with_offset(b, offset_x=200)
+
+>>>Detect clicks in the shifted closet
+if is_clicked_with_offset(shirt_buttons[0], event, offset_x=200):
+    print("Shirt 1 selected!")
+'''
 
 #Vertical offset buttons for the closet
 #AD: I would group these next two together in a doc string
