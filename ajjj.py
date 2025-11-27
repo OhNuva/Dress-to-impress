@@ -518,8 +518,25 @@ If current_page=ranking+page, the game will display a random score from 1-10 whe
 This page uses the 'random.randint()' function and is enabled because 'random' was imported at the beginning of the code.
 
 >>>Event Handling
-All pygame events are procesed inside a single event loop
+All pygame events are processed inside a single event loop. 
+The events for each page are as follows: 
+    start_page: start and exit buttons
+    gender_page: male and female selection 
+    prof_page: professor button selection 
+    mannequin_page: open/close the closet, category selection (shirts, pants, shoes, hats),
+    selecting individual clothing items, and uses 'is_clicked_with_offset()'to handle clicks on a sliding menu. 
+    
+>>>Sliding Closet Menu
+When the sliding closet panel opens, category buttons and clothing buttons are drawn using the 'draw_button_with offset()' function
+which temporarily shifts the buttons so they appear in the sliding panel. 
 
+>>>Drawing and Rendering
+Each frame depending on the current page, checks and draws the background image, buttons for that page,
+mannequin and professor head images, the currently selected clothing items, the sliding closet panel and category/ item buttns, and in the case that its 
+applicable, the ranking score. 
+
+The screen is refrshed every frame using 'pygame.display.update' and the game runs at 60 FPS 
+using 'clock.ticl(60)'.
 '''
 
 # main loop
