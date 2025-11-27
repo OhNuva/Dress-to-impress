@@ -537,6 +537,8 @@ applicable, the ranking score.
 
 The screen is refrshed every frame using 'pygame.display.update' and the game runs at 60 FPS 
 using 'clock.ticl(60)'.
+
+The loop ends when the user closes the window and pygame is shit down.
 '''
 
 # main loop
