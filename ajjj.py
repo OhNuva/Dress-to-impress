@@ -517,6 +517,8 @@ using current_shirt, current_pants, current_shoes, current_hat.
 If current_page=ranking+page, the game will display a random score from 1-10 when the ranking button is pressed.
 This page uses the 'random.randint()' function and is enabled because 'random' was imported at the beginning of the code.
 
+>>>Event Handling
+All pygame events are procesed inside a single event loop
 
 '''
 
