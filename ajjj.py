@@ -57,15 +57,15 @@ LIGHT_GRAY = (200, 200, 200)
 RED = (255, 0, 0)
 
 #png background file
-background_one = pygame.image.load("images/background_one.png")
+background_one = pygame.image.load("Images/background_one.png")
 background_one = pygame.transform.scale(background_one, (screen_width, screen_height))
-background_two = pygame.image.load("images/background_two.png")
+background_two = pygame.image.load("Images/background_two.png")
 background_two = pygame.transform.scale(background_two, (screen_width, screen_height))
-background_three = pygame.image.load("images/background_three.png")
+background_three = pygame.image.load("Images/background_three.png")
 background_three = pygame.transform.scale(background_three, (screen_width, screen_height))
-background_four = pygame.image.load("images/background_four.png")
+background_four = pygame.image.load("Images/background_four.png")
 background_four = pygame.transform.scale(background_four, (screen_width, screen_height))
-background_ranking = pygame.image.load("images/background_ranking.png")
+background_ranking = pygame.image.load("Images/background_ranking.png")
 background_ranking = pygame.transform.scale(background_ranking, (screen_width, screen_height))
 
 '''
@@ -188,7 +188,7 @@ ranking_page = "ranking"
 
 '''
 The following displays the professor avatars that may be chosen and the associated name of the professor.
-Each professor image is loaded from the `images/` directory and scaled to
+Each professor image is loaded from the Images/ directory and scaled to
 100×100 pixels for menu display.
 >>> pendar : pygame. Surface #female professor example
 Uploads a cartoon image of Professor Pendar Mahmoudi.
@@ -205,19 +205,19 @@ List of corresponding names for each image.
 '''
 #professor_png
 #female professors
-pendar = pygame.image.load("images/pendar_cartoon_trans.png")
+pendar = pygame.image.load("Images/pendar_cartoon.png")
 pendar = pygame.transform.scale(pendar, (100, 100))
-comfort = pygame.image.load("images/comfort_cartoon_trans.png")
+comfort = pygame.image.load("Images/comfort_cartoon.png")
 comfort = pygame.transform.scale(comfort, (100, 100))
-mary = pygame.image.load("images/dean_mary_cartoon_trans.png")
+mary = pygame.image.load("Images/dean_mary_cartoon.png")
 mary = pygame.transform.scale(mary, (100, 100))
 
 #male professors
-michael = pygame.image.load("images/tam_cartoon_trans.png")
+michael = pygame.image.load("Images/tam_cartoon.png")
 michael = pygame.transform.scale(michael, (100, 100))
-jordan = pygame.image.load("images/jhammy_cartoon_trans.png")
+jordan = pygame.image.load("Images/jhammy_cartoon.png")
 jordan = pygame.transform.scale(jordan, (100, 100))
-boxin = pygame.image.load("images/boxin_cartoon_trans.png")
+boxin = pygame.image.load("Images/boxin_cartoon.png")
 boxin = pygame.transform.scale(boxin, (100, 100))
 
 #lists of all profs
@@ -246,47 +246,47 @@ Contains all available shoe options.
 Contains all available hat options.
 '''
 #shirts_png
-shirt1 = pygame.image.load("images/shirt1.png")
+shirt1 = pygame.image.load("Images/shirt1.png")
 shirt1 = pygame.transform.scale(shirt1, (150, 150))
-shirt2 = pygame.image.load("images/shirt2.png")
+shirt2 = pygame.image.load("Images/shirt2.png")
 shirt2 = pygame.transform.scale(shirt2, (150, 150))
-shirt3 = pygame.image.load("images/shirt3.png")
+shirt3 = pygame.image.load("Images/shirt3.png")
 shirt3 = pygame.transform.scale(shirt3, (150, 150))
-shirt4 = pygame.image.load("images/shirt4.png")
+shirt4 = pygame.image.load("Images/shirt4.png")
 shirt4 = pygame.transform.scale(shirt4, (150, 150))
-shirt5 = pygame.image.load("images/shirt5.png")
+shirt5 = pygame.image.load("Images/shirt5.png")
 shirt5 = pygame.transform.scale(shirt5, (150, 150))
-shirt6 = pygame.image.load("images/shirt6.png")
+shirt6 = pygame.image.load("Images/shirt6.png")
 shirt6 = pygame.transform.scale(shirt6, (150, 150))
-shirt7 = pygame.image.load("images/shirt7.png")
+shirt7 = pygame.image.load("Images/shirt7.png")
 shirt7 = pygame.transform.scale(shirt7, (150, 150))
 
 #pants_png
-pants1 = pygame.image.load("images/pants1.png")
+pants1 = pygame.image.load("Images/pants1.png")
 pants1 = pygame.transform.scale(pants1, (150, 150))
-pants2 = pygame.image.load("images/pants2.png")
+pants2 = pygame.image.load("Images/pants2.png")
 pants2 = pygame.transform.scale(pants2, (150, 150))
-pants3 = pygame.image.load("images/pants3.png")
+pants3 = pygame.image.load("Images/pants3.png")
 pants3 = pygame.transform.scale(pants3, (150, 150))
-pants4 = pygame.image.load("images/pants4.png")
+pants4 = pygame.image.load("Images/pants4.png")
 pants4 = pygame.transform.scale(pants4, (150, 150))
-pants5 = pygame.image.load("images/pants5.png")
+pants5 = pygame.image.load("Images/pants5.png")
 pants5 = pygame.transform.scale(pants5, (150, 150))
 
 #shoes_png
-shoe1 = pygame.image.load("images/shoe1.png")
+shoe1 = pygame.image.load("Images/shoe1.png")
 shoe1 = pygame.transform.scale(shoe1, (150, 70))
-shoe2 = pygame.image.load("images/shoe2.png")
+shoe2 = pygame.image.load("Images/shoe2.png")
 shoe2 = pygame.transform.scale(shoe2, (150, 70))
-shoe3 = pygame.image.load("images/shoe3.png")
+shoe3 = pygame.image.load("Images/shoe3.png")
 shoe3 = pygame.transform.scale(shoe3, (150, 70))
 
 #hats_png
-hat1 = pygame.image.load("images/hat1.png")
+hat1 = pygame.image.load("Images/hat1.png")
 hat1 = pygame.transform.scale(hat1, (120, 80))
-hat2 = pygame.image.load("images/hat2.png")
+hat2 = pygame.image.load("Images/hat2.png")
 hat2 = pygame.transform.scale(hat2, (120, 80))
-hat3 = pygame.image.load("images/hat3.png")
+hat3 = pygame.image.load("Images/hat3.png")
 hat3 = pygame.transform.scale(hat3, (120,80))
 
 #lists of clothes
