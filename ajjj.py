@@ -5,8 +5,12 @@ import random
 pygame.init()
 
 pygame.mixer.init()
-pygame.mixer.music.load('path/to/your/audio.wav')
-pygame.mixer.music.play()
+
+# Load background music
+pygame.mixer.music.load("Music/game_sound.mp3")
+pygame.mixer.music.set_volume(0.3)
+pygame.mixer.music.play(-1)
+
 
 '''
 The following will provide the standard aspects of the game, particularly the screen configuration. 
@@ -492,6 +496,27 @@ def is_clicked_with_offset(button, event, offset_y):
     button.rect.x = old_x
     return clicked
 '''
+The following block of code is the main game loop for the game, which is repsonsible for the current page/ state of the game
+all event handling, and drawing all user interface elements/ images/ clothing overlays.
+
+>>>Game States
+The game uses 'current_page' to switch between screens by setting the variable equal to different things.
+
+If current_page= start_page, the game displays the backgroun image and start/exit buttons. If the start button
+is clicked, the game continues to the next page: 'gender_page' and if the exit button is clicked the game exits.
+
+If current_page=gender_page, the game displays buttons for either female or male character selection.
+The game will then be directed to the prof_page, which will display a set of professor buttons based on the gender that was selected.
+Clicking one of these buttons sets 'selected_prof' and moves on to the mannequin_page. 
+
+If current_page=mannequin_page then the game will display the mannequin with the selected professor's head.
+This page also includes the sliding closet panel containing all clothing types: shirts, pants, shoes, hats.
+On this page players can open and close the closet and choose clothing items which are drawn onto the mannequin
+using current_shirt, current_pants, current_shoes, current_hat. 
+
+If current_page=ranking+page, the game will display a random score from 1-10 when the ranking button is pressed.
+This page uses the 'random.randint()' function and is enabled because 'random' was imported at the beginning of the code.
+
 
 '''
 
