@@ -205,19 +205,19 @@ List of corresponding names for each image.
 '''
 #professor_png
 #female professors
-pendar = pygame.image.load("Images/pendar_cartoon.png")
+pendar = pygame.image.load("Images/pendar_cartoon_trans.png")
 pendar = pygame.transform.scale(pendar, (100, 100))
-comfort = pygame.image.load("Images/comfort_cartoon.png")
+comfort = pygame.image.load("Images/comfort_cartoon_trans.png")
 comfort = pygame.transform.scale(comfort, (100, 100))
-mary = pygame.image.load("Images/dean_mary_cartoon.png")
+mary = pygame.image.load("Images/dean_mary_cartoon_trans.png")
 mary = pygame.transform.scale(mary, (100, 100))
 
 #male professors
-michael = pygame.image.load("Images/tam_cartoon.png")
+michael = pygame.image.load("Images/tam_cartoon_trans.png")
 michael = pygame.transform.scale(michael, (100, 100))
-jordan = pygame.image.load("Images/jhammy_cartoon.png")
+jordan = pygame.image.load("Images/jhammy_cartoon_trans.png")
 jordan = pygame.transform.scale(jordan, (100, 100))
-boxin = pygame.image.load("Images/boxin_cartoon.png")
+boxin = pygame.image.load("Images/boxin_cartoon_trans.png")
 boxin = pygame.transform.scale(boxin, (100, 100))
 
 #lists of all profs
