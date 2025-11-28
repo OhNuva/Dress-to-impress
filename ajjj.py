@@ -249,11 +249,11 @@ Contains all available hat options.
 '''
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
-shirt1 = pygame.transform.scale(shirt1, (385, 300))
+shirt1 = pygame.transform.scale(shirt1, (375, 300))
 shirt2 = pygame.image.load("Images/shirt2.png")
-shirt2 = pygame.transform.scale(shirt2, (450, 300))
+shirt2 = pygame.transform.scale(shirt2, (375, 300))
 shirt3 = pygame.image.load("Images/shirt3.png")
-shirt3 = pygame.transform.scale(shirt3, (450, 300))
+shirt3 = pygame.transform.scale(shirt3, (375, 300))
 shirt4 = pygame.image.load("Images/shirt4.png")
 shirt4 = pygame.transform.scale(shirt4, (375, 300))
 shirt5 = pygame.image.load("Images/shirt5.png")
@@ -424,12 +424,14 @@ item_x_start = 20
 item_y_start = 280
 item_gap_x = 160
 item_gap_y = 180
+item_gap_y_shirt=120
+
 #shirts
 for i in range(len(shirt_list)):
     col = i % 2
     row = i // 2
     x = item_x_start + col * item_gap_x
-    y = item_y_start + row * item_gap_y
+    y = item_y_start + row * item_gap_y_shirt
     button = Button(x, y, 110, 110, f"S{i+1}", image=shirt_list[i])
     shirt_buttons.append(button)
 #pants
@@ -731,45 +733,17 @@ def main():
 
             #positions of clothing to manquine
             #shirt
-            if current_shirt == shirt1:
-                screen.blit(current_shirt, (315, 125))
-            if current_shirt == shirt2:
-                screen.blit(current_shirt, (283, 125))
-            if current_shirt == shirt3:
-                screen.blit(current_shirt, (282, 120))
-            if current_shirt == shirt4:
-                screen.blit(current_shirt, (300, 125))
-            if current_shirt == shirt5:
-                screen.blit(current_shirt, (300, 125))
-            if current_shirt == shirt6:
-                screen.blit(current_shirt, (300, 125))
-            if current_shirt == shirt7:
-                screen.blit(current_shirt, (300, 125))
+            if current_shirt:
+                screen.blit(current_shirt, (320, 125)) 
             #pants
-            if current_pants == pants1:
-                screen.blit(current_pants, (412, 400))
-            if current_pants == pants2:
-                screen.blit(current_pants, (412, 400))
-            if current_pants == pants3:
-                screen.blit(current_pants, (412, 400))
-            if current_pants == pants4:
-                screen.blit(current_pants, (412, 400))
-            if current_pants == pants5:
-                screen.blit(current_pants, (412, 400))
+            if current_pants:
+                screen.blit(current_pants, (412, 440))
             #shoes
-            if current_shoes == shoe1:
-                screen.blit(current_shoes, (422, 580))
-            if current_shoes == shoe2:
-                screen.blit(current_shoes, (422, 580))
-            if current_shoes == shoe3:
+            if current_shoes:
                 screen.blit(current_shoes, (422, 580))
             #hat
-            if current_hat == hat1:
-                screen.blit(current_hat, (452, 120))
-            if current_hat == hat2:
-                screen.blit(current_hat, (412, 400))
-            if current_hat == hat3:
-                screen.blit(current_hat, (412, 400)) 
+            if current_hat:
+                screen.blit(current_hat, (452, 120))   
 
             #sliding closet side panel
             if closet_open or menu_x < screen_width:
