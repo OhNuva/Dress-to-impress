@@ -98,6 +98,48 @@ female_profs = [pendar, comfort, mary]
 female_names = ["Pendar Mahmoudi", "Comfort Mintah", "Mary Wells"]
 male_profs = [michael, jordan, boxin]
 male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
+<<<<<<< HEAD
+=======
+'''
+The following will provide a list of clothing graphics that will be used for character customization during the game.
+All uplaods are loaded from the Images/ or images/ directory and scaled to consistent sizes for display.
+>>> shirt1–shirt7 : pygame. Surface
+A list of shirt graphics (seven), #scaled to 140x140 pixels.
+>>> pants1–pants5 : pygame. Surface
+A list of pant graphics (five), #scaled to 160×140 pixels.
+>>> shoe1–shoe3 : pygame. Surface
+A list of shoe graphics (three), #scaled to 140×60 pixels.
+>>> hat1–hat3 : pygame. Surface
+A list of hat/accessory graphics (three), #scaled to 90×70 pixels.
+>>> shirt_list : list[pygame.Surface]
+Contains all available shirt options.
+>>> pants_list : list[pygame.Surface]
+Contains all available pants options.
+>>> shoes_list : list[pygame.Surface]
+Contains all available shoe options.
+>>> hats_list : list[pygame.Surface]
+Contains all available hat options.
+'''
+#shirts_png
+shirt1 = pygame.image.load("Images/shirt1.png")
+<<<<<<< Updated upstream
+shirt1 = pygame.transform.scale(shirt1, (385, 300))
+=======
+shirt1 = pygame.transform.scale(shirt1, (200, 200))
+>>>>>>> Stashed changes
+shirt2 = pygame.image.load("Images/shirt2.png")
+shirt2 = pygame.transform.scale(shirt2, (450, 300))
+shirt3 = pygame.image.load("Images/shirt3.png")
+shirt3 = pygame.transform.scale(shirt3, (455, 300))
+shirt4 = pygame.image.load("Images/shirt4.png")
+shirt4 = pygame.transform.scale(shirt4, (420, 300))
+shirt5 = pygame.image.load("Images/shirt5.png")
+shirt5 = pygame.transform.scale(shirt5, (365, 300))
+shirt6 = pygame.image.load("Images/shirt6.png")
+shirt6 = pygame.transform.scale(shirt6, (460, 300))
+shirt7 = pygame.image.load("Images/shirt7.png")
+shirt7 = pygame.transform.scale(shirt7, (460, 300))
+>>>>>>> 55b1fd1bbbadc598faf396ab0c9cda6f39627a6d
 
 # clothing images
 shirt1 = pygame.image.load("Images/shirt1.png"); shirt1 = pygame.transform.scale(shirt1, (385, 300))
