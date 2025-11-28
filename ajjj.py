@@ -759,23 +759,20 @@ def main():
                 if hats_open:
                     for button in hat_buttons:
                         draw_button_with_offset(button, menu_x)
-
+                        
         elif current_page == ranking_page:
             screen.blit(background_ranking, (0, 0))
-
             # draw the score (centered a bit higher)
             if ranking_score is not None:
                 num_font = pygame.font.SysFont("Arial", 80)
                 score_text = num_font.render(str(ranking_score), True, BLACK)
                 score_rect = score_text.get_rect(center=(screen_width // 2, 220))
                 screen.blit(score_text, score_rect)
-
             # draw the "Do you want to play again?" text
             prompt_font = pygame.font.SysFont("Arial", 40)
             prompt_text = prompt_font.render("Do you want to play again?", True, BLACK)
             prompt_rect = prompt_text.get_rect(center=(screen_width // 2, 330))
             screen.blit(prompt_text, prompt_rect)
-
             # draw the Yes / No buttons
             yes_button.draw(screen)
             no_button.draw(screen)
@@ -783,9 +780,5 @@ def main():
     pygame.display.update()
     clock.tick(40)
         
-    # loop ended (running == False), so now quit
-    pygame.quit()
-    sys.exit()
-
 if __name__ == "__main__":
     main()
