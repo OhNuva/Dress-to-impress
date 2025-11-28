@@ -691,7 +691,7 @@ def main():
                 screen.fill((230, 230, 255))  
             title_font = pygame.font.SysFont("Arial", 48)
             title_text = title_font.render("Choose Your Character", True, BLACK)
-            screen.blit(title_text, (300, 200))
+            screen.blit(title_text, (325, 250))
 
             male_button.draw(screen)
             female_button.draw(screen)
@@ -704,7 +704,7 @@ def main():
                 screen.fill(WHITE)
             title_font = pygame.font.SysFont("Arial", 48)
             title_text = title_font.render("Choose Your Professor", True, BLACK)
-            screen.blit(title_text, (280, 180))
+            screen.blit(title_text, (325, 250))
 
             #professors as buttons
             prof_x = 160
