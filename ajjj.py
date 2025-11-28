@@ -428,7 +428,7 @@ for i in range(len(shirt_list)):
     row = i // 2
     x = item_x_start + col * item_gap_x
     y = item_y_start + row * item_gap_y
-    button = Button(x, y, 150, 150, f"S{i+1}", image=shirt_list[i])
+    button = Button(x, y, 110, 110, f"S{i+1}", image=shirt_list[i])
     shirt_buttons.append(button)
 #pants
 for i in range(len(pants_list)):
