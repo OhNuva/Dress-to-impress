@@ -269,7 +269,7 @@ pants1 = pygame.image.load("Images/pants1.png"); pants1 = pygame.transform.scale
 pants2 = pygame.image.load("Images/pants2.png"); pants2 = pygame.transform.scale(pants2, (315, 350))
 pants3 = pygame.image.load("Images/pants3.png"); pants3 = pygame.transform.scale(pants3, (370, 350))
 pants4 = pygame.image.load("Images/pants4.png"); pants4 = pygame.transform.scale(pants4, (380, 300))
-pants5 = pygame.image.load("Images/pants5.png"); pants5 = pygame.transform.scale(pants5, (380, 350))
+pants5 = pygame.image.load("Images/pants5.png"); pants5 = pygame.transform.scale(pants5, (455, 400))
 
 shoe1 = pygame.image.load("Images/shoe1.png"); shoe1 = pygame.transform.scale(shoe1, (200, 100))
 shoe2 = pygame.image.load("Images/shoe2.png"); shoe2 = pygame.transform.scale(shoe2, (200, 100))
@@ -721,7 +721,7 @@ def main():
             elif current_pants == pants4:
                 screen.blit(current_pants, (328, 330))
             elif current_pants == pants5:
-                screen.blit(current_pants, (328, 330))
+                screen.blit(current_pants, (300, 280))
 
             if current_shoes == shoe1:
                 screen.blit(current_shoes, (407, 600))
