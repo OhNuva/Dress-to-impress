@@ -146,20 +146,18 @@ class Button:
 
 '''
 The following will produce buttons that will be used throughout the game.
->>> ranking_button : Button
-Used to illustrate the score of the outfit #(300, 400) with 200×50 pixels.
 >>> start_button : Button
-Navigates to the next screen, beginning the game, #positioned at (250, 250).
+Navigates to the next screen, beginning the game, #positioned at (300, 500).
 >>> exit_button : Button
-Closes the game when clicked, #postitioned at (470, 250) with 200×50 pixels.
+Closes the game when clicked, #postitioned at (520, 450) with 200×50 pixels.
 >>> male_button : Button
-Allows users to select a male character, #positioned at (200, 250) with 180×50 pixels.
+Allows users to select a male character, #positioned at (320, 450) with 180×50 pixels.
 >>> female_button : Button
-Allows users to select a female character, #positioned at (420, 250) with 180×50 pixels.
+Allows users to select a female character, #positioned at (540, 250) with 180×50 pixels.
 >>> yes_button : Button
-Allows users to select yes when prompted to play again, #positioned at ()
+Allows users to select yes when prompted to play again, #positioned at (300, 450) with 200x50 pixels.
 >>> no_button : Button
-Allows users to select no when prompted to play again, 
+Allows users to select no when prompted to play again, #positioned at (300, 450) with 200x50 pixels.
 '''
 
 # UI buttons
@@ -167,8 +165,8 @@ start_button = Button(300, 500, 200, 50, "Start")
 exit_button = Button(520, 500, 200, 50, "Exit")
 male_button = Button(320, 450, 180, 50, "Male")
 female_button = Button(540, 450, 180, 50, "Female")
-yes_button = Button(300, 500, 200, 50, "Yes")
-no_button = Button(520, 500, 200, 50, "No")
+yes_button = Button(300, 450, 200, 50, "Yes")
+no_button = Button(520, 450, 200, 50, "No")
 
 '''
 The following are strings that introduce and represent various game pages that will be used throughout the game.
@@ -602,7 +600,7 @@ def main():
                             current_page = mannequin_page
 
             # mannequin page
-            if current_page == mannequin_page:
+            elif current_page == mannequin_page:
                 if closet_button.is_clicked(event):
                     closet_open = not closet_open
                     if not closet_open:
@@ -760,6 +758,14 @@ def main():
                     for button in hat_buttons:
                         draw_button_with_offset(button, menu_x)
                         
+                        # ranking page – handle Yes / No clicks here
+            elif current_page == ranking_page:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if yes_button.is_clicked(event):
+                        reset_game_state()
+                    elif no_button.is_clicked(event):
+                        running = False
+                        
         elif current_page == ranking_page:
             screen.blit(background_ranking, (0, 0))
             # draw the score (centered a bit higher)
@@ -776,9 +782,16 @@ def main():
             # draw the Yes / No buttons
             yes_button.draw(screen)
             no_button.draw(screen)
+            if yes_button.is_clicked(event):
+                reset_game_state()
+            elif no_button.is_clicked(event):
+                running = False
                 
-    pygame.display.update()
-    clock.tick(40)
+        pygame.display.update()
+        clock.tick(40)
+    
+    pygame.quit()
+    sys.exit()
         
 if __name__ == "__main__":
     main()
