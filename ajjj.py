@@ -159,8 +159,7 @@ Allows users to select a female character, #positioned at (420, 250) with 180×5
 ranking_button = Button(300, 500, 200, 50, "Submit")
 
 #button graphics
-start_button = Button(250, 350, 200, 50, "Start")
-exit_button  = Button(470, 350, 200, 50, "Exit")
+
 start_button = Button(300, 500, 200, 50, "Start")
 exit_button  = Button(520, 500, 200, 50, "Exit")
 
@@ -208,19 +207,19 @@ List of corresponding names for each image.
 #professor_png
 #female professors
 pendar = pygame.image.load("Images/pendar_cartoon_trans.png")
-pendar = pygame.transform.scale(pendar, (100, 100))
+pendar = pygame.transform.scale(pendar, (110, 110))
 comfort = pygame.image.load("Images/comfort_cartoon_trans.png")
-comfort = pygame.transform.scale(comfort, (100, 100))
+comfort = pygame.transform.scale(comfort, (110, 110))
 mary = pygame.image.load("Images/dean_mary_cartoon_trans.png")
-mary = pygame.transform.scale(mary, (100, 100))
+mary = pygame.transform.scale(mary, (110, 110))
 
 #male professors
 michael = pygame.image.load("Images/tam_cartoon_trans.png")
-michael = pygame.transform.scale(michael, (100, 100))
+michael = pygame.transform.scale(michael, (110, 110))
 jordan = pygame.image.load("Images/jhammy_cartoon_trans.png")
-jordan = pygame.transform.scale(jordan, (100, 100))
+jordan = pygame.transform.scale(jordan, (110, 110))
 boxin = pygame.image.load("Images/boxin_cartoon_trans.png")
-boxin = pygame.transform.scale(boxin, (100, 100))
+boxin = pygame.transform.scale(boxin, (110, 110))
 
 #lists of all profs
 female_profs = [pendar, comfort, mary]
@@ -291,11 +290,6 @@ hat2 = pygame.transform.scale(hat2, (95, 70))
 hat3 = pygame.image.load("Images/hat3.png")
 hat3 = pygame.transform.scale(hat3, (95, 70))
 
-#lists of clothes
-shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
-pants_list = [pants1]
-shoes_list = [shoe1, shoe2, shoe3]
-hats_list = [hat1, hat2, hat3]
 
 '''
 The following loads and scales clothing pieces, putting them in their respective lists using filename patterns.
@@ -426,6 +420,7 @@ item_gap_x = 160
 item_gap_y = 180
 item_gap_y_shirt=120
 item_gap_y_pant=135
+item_x_start_hat=10
 
 #shirts
 for i in range(len(shirt_list)):
@@ -455,7 +450,7 @@ for i in range(len(shoes_list)):
 for i in range(len(hat_list)):
     col = i % 2
     row = i // 2
-    x = item_x_start + col * item_gap_x
+    x = item_x_start_hat + col * item_gap_x
     y = item_y_start + row * item_gap_y
     button = Button(x, y, 120, 80, f"H{i+1}", image=hat_list[i])
     hat_buttons.append(button)
