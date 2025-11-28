@@ -161,10 +161,12 @@ ranking_button = Button(300, 500, 200, 50, "Submit")
 #button graphics
 start_button = Button(250, 350, 200, 50, "Start")
 exit_button  = Button(470, 350, 200, 50, "Exit")
+start_button = Button(300, 500, 200, 50, "Start")
+exit_button  = Button(520, 500, 200, 50, "Exit")
 
 #male/female buttons
-male_button   = Button(200, 350, 180, 50, "Male")
-female_button = Button(420, 350, 180, 50, "Female")
+male_button   = Button(320, 450, 180, 50, "Male")
+female_button = Button(540, 450, 180, 50, "Female")
 '''
 The following are strings that introduce and represent various game pages that will be used throughout the game.
 >>> start_page : str
@@ -247,19 +249,19 @@ Contains all available hat options.
 '''
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
-shirt1 = pygame.transform.scale(shirt1, (350, 400))
+shirt1 = pygame.transform.scale(shirt1, (375, 300))
 shirt2 = pygame.image.load("Images/shirt2.png")
-shirt2 = pygame.transform.scale(shirt2, (150, 150))
+shirt2 = pygame.transform.scale(shirt2, (375, 300))
 shirt3 = pygame.image.load("Images/shirt3.png")
-shirt3 = pygame.transform.scale(shirt3, (150, 150))
+shirt3 = pygame.transform.scale(shirt3, (375, 300))
 shirt4 = pygame.image.load("Images/shirt4.png")
-shirt4 = pygame.transform.scale(shirt4, (150, 150))
+shirt4 = pygame.transform.scale(shirt4, (375, 300))
 shirt5 = pygame.image.load("Images/shirt5.png")
-shirt5 = pygame.transform.scale(shirt5, (150, 150))
+shirt5 = pygame.transform.scale(shirt5, (375, 300))
 shirt6 = pygame.image.load("Images/shirt6.png")
-shirt6 = pygame.transform.scale(shirt6, (150, 150))
+shirt6 = pygame.transform.scale(shirt6, (375, 300))
 shirt7 = pygame.image.load("Images/shirt7.png")
-shirt7 = pygame.transform.scale(shirt7, (150, 150))
+shirt7 = pygame.transform.scale(shirt7, (375, 300))
 
 #pants_png
 pants1 = pygame.image.load("Images/pants1.png")
@@ -730,7 +732,7 @@ def main():
             #positions of clothing to manquine
             #shirt
             if current_shirt:
-                screen.blit(current_shirt, (422, 290)) 
+                screen.blit(current_shirt, (320, 125)) 
             #pants
             if current_pants:
                 screen.blit(current_pants, (412, 440))
