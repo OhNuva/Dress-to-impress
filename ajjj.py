@@ -425,6 +425,7 @@ item_y_start = 280
 item_gap_x = 160
 item_gap_y = 180
 item_gap_y_shirt=120
+item_gap_y_pant=135
 
 #shirts
 for i in range(len(shirt_list)):
@@ -439,8 +440,8 @@ for i in range(len(pants_list)):
     col = i % 2
     row = i // 2
     x = item_x_start + col * item_gap_x
-    y = item_y_start + row * item_gap_y
-    button = Button(x, y, 150, 150, f"P{i+1}", image=pants_list[i])
+    y = item_y_start + row * item_gap_y_pant
+    button = Button(x, y, 120, 120, f"P{i+1}", image=pants_list[i])
     pants_buttons.append(button)
 #shoes
 for i in range(len(shoes_list)):
@@ -448,7 +449,7 @@ for i in range(len(shoes_list)):
     row = i // 2
     x = item_x_start + col * item_gap_x
     y = item_y_start + row * item_gap_y
-    button = Button(x, y, 150, 70, f"Sh{i+1}", image=shoes_list[i])
+    button = Button(x, y, 120, 90, f"Sh{i+1}", image=shoes_list[i])
     shoes_buttons.append(button)
 #hats
 for i in range(len(hat_list)):
