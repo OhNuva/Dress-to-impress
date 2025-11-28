@@ -159,8 +159,8 @@ Allows users to select a female character, #positioned at (420, 250) with 180×5
 ranking_button = Button(300, 500, 200, 50, "Submit")
 
 #button graphics
-start_button = Button(300, 525, 200, 50, "Start")
-exit_button  = Button(520, 525, 200, 50, "Exit")
+start_button = Button(250, 350, 200, 50, "Start")
+exit_button  = Button(470, 350, 200, 50, "Exit")
 
 #male/female buttons
 male_button   = Button(200, 350, 180, 50, "Male")
@@ -247,7 +247,7 @@ Contains all available hat options.
 '''
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
-shirt1 = pygame.transform.scale(shirt1, (150, 150))
+shirt1 = pygame.transform.scale(shirt1, (350, 400))
 shirt2 = pygame.image.load("Images/shirt2.png")
 shirt2 = pygame.transform.scale(shirt2, (150, 150))
 shirt3 = pygame.image.load("Images/shirt3.png")
