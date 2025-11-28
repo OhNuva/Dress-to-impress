@@ -159,8 +159,8 @@ Allows users to select a female character, #positioned at (420, 250) with 180×5
 ranking_button = Button(300, 500, 200, 50, "Submit")
 
 #button graphics
-start_button = Button(250, 350, 200, 50, "Start")
-exit_button  = Button(470, 350, 200, 50, "Exit")
+start_button = Button(300, 525, 200, 50, "Start")
+exit_button  = Button(520, 525, 200, 50, "Exit")
 
 #male/female buttons
 male_button   = Button(200, 350, 180, 50, "Male")
