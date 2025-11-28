@@ -743,7 +743,7 @@ def main():
             if selected_prof:
                 screen.blit(selected_prof, (450, 40))
 
-            # prompt (only first 10 seconds)
+            # prompt (only first 5 seconds)
             if current_prompt is not None and prompt_start_time is not None:
                 prompt_elapsed = (pygame.time.get_ticks() - prompt_start_time) / 1000
                 if prompt_elapsed < prompt_duration:
@@ -879,7 +879,7 @@ def main():
             no_button.draw(screen)
 
         pygame.display.update()
-        clock.tick(40)
+        clock.tick(35)
 
     pygame.quit()
     sys.exit()
