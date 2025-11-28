@@ -255,7 +255,7 @@ shirt2 = pygame.transform.scale(shirt2, (450, 300))
 shirt3 = pygame.image.load("Images/shirt3.png")
 shirt3 = pygame.transform.scale(shirt3, (450, 300))
 shirt4 = pygame.image.load("Images/shirt4.png")
-shirt4 = pygame.transform.scale(shirt4, (375, 300))
+shirt4 = pygame.transform.scale(shirt4, (420, 300))
 shirt5 = pygame.image.load("Images/shirt5.png")
 shirt5 = pygame.transform.scale(shirt5, (375, 300))
 shirt6 = pygame.image.load("Images/shirt6.png")
@@ -738,7 +738,7 @@ def main():
             if current_shirt == shirt3:
                 screen.blit(current_shirt, (282, 120))
             if current_shirt == shirt4:
-                screen.blit(current_shirt, (300, 125))
+                screen.blit(current_shirt, (299, 135))
             if current_shirt == shirt5:
                 screen.blit(current_shirt, (300, 125))
             if current_shirt == shirt6:
