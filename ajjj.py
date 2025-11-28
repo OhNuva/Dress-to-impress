@@ -769,9 +769,25 @@ def main():
             if timer_enabled and start_time is not None:
                 elapsed = (pygame.time.get_ticks() - start_time) / 1000
                 remaining = max(0, int(time_limit - elapsed))
+
                 timer_font = pygame.font.SysFont("Arial", 40)
-                timer_text = timer_font.render(f"Time Left: {remaining}", True, RED)
-                screen.blit(timer_text, (800, 50))
+                timer_text = timer_font.render(f"Time Left: {remaining}", True, BLACK)
+
+                # choose timer position (left side, adjust as needed)
+                timer_rect = timer_text.get_rect(topleft=(30, 140))
+
+                # white background padding
+                padding_x = 20
+                padding_y = 10
+                bg_rect = timer_rect.inflate(padding_x, padding_y)
+
+                # draw white rounded rectangle
+                pygame.draw.rect(screen, WHITE, bg_rect, border_radius=10)
+
+                # draw timer text on top
+                screen.blit(timer_text, timer_rect)
+
+                # when time hits zero, move to ranking page
                 if remaining == 0:
                     ranking_score = random.randint(1, 10)
                     current_page = ranking_page
