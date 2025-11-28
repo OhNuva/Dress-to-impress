@@ -378,7 +378,7 @@ Will hold buttons for all available hat options.
 '''
 
 # Create closet and category buttons (positions will be used with offset)
-closet_button = Button(420, 500, 140, 50, "Closet")
+closet_button = Button(35, 35, 140, 50, "Closet")
 # category buttons inside closet (y is relative to closet top)
 shirts_cat_button = Button(20, 20, 140, 40, "Shirts")
 pants_cat_button = Button(20, 70, 140, 40, "Pants")
@@ -430,7 +430,7 @@ for i in range(len(shirt_list)):
     row = i // 2
     x = item_x_start + col * item_gap_x
     y = item_y_start + row * item_gap_y
-    button = Button(x, y, 150, 150, f"S{i+1}", image=shirt_list[i])
+    button = Button(x, y, 110, 110, f"S{i+1}", image=shirt_list[i])
     shirt_buttons.append(button)
 #pants
 for i in range(len(pants_list)):
@@ -693,7 +693,7 @@ def main():
                 screen.fill((230, 230, 255))  
             title_font = pygame.font.SysFont("Arial", 48)
             title_text = title_font.render("Choose Your Character", True, BLACK)
-            screen.blit(title_text, (300, 200))
+            screen.blit(title_text, (325, 250))
 
             male_button.draw(screen)
             female_button.draw(screen)
@@ -706,7 +706,7 @@ def main():
                 screen.fill(WHITE)
             title_font = pygame.font.SysFont("Arial", 48)
             title_text = title_font.render("Choose Your Professor", True, BLACK)
-            screen.blit(title_text, (280, 180))
+            screen.blit(title_text, (325, 250))
 
             #professors as buttons
             prof_x = 160
