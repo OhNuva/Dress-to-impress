@@ -100,6 +100,35 @@ time_limit = 40
 start_time = None
 
 '''
+The following will define the prompt that appears at the start of the mannequin page.
+>>> prompt_list : list[str]
+A list of possible styling prompts shown to the player.
+>>> current_prompt : str or None
+The prompt currently being displayed. #None means no prompt is active.
+>>> prompt_start_time : int or None
+The time in milliseconds when the current prompt started showing.
+>>> prompt_duration : int
+How long (in seconds) the prompt stays visible.
+'''
+
+prompt_list = [
+    "Dress to impress, because you've got a co-op interview to get to!",
+    "Dress to impress for your first day of class!",
+    "Dress to impress for a meeting with the Dean.",
+    "Dress to impress, because you've got a Soap Symposium to get to!",
+    "Dress to impress! It's day one of O-Week!",
+    "Dress to impress for brainrot trivia night!",
+    "Dress to impress! It's Halloweekend!",
+    "Dress to impress the WEEF TAs.",
+    "Dress to impress! It's Fun Friday!",
+    "Dress to impress for your very first lab!",
+]
+
+current_prompt = None
+prompt_start_time = None
+prompt_duration = 10  # seconds
+
+'''
 The following function will create a rectangular button for the user to select. It will store the text
 in an Arial font and optionally stores an image that will be displayed above the text.
 >>> x : int
@@ -479,7 +508,7 @@ def reset_game_state():
     global current_page, ranking_score, selected_prof, prof_list, prof_names
     global closet_open, menu_x, shirts_open, pants_open, shoes_open, hats_open
     global current_shirt, current_pants, current_shoes, current_hat
-    global start_time
+    global start_time, current_prompt, prompt_start_time
 
     # Go back to gender selection (you can change this to start_page if you prefer)
     current_page = gender_page
@@ -502,6 +531,8 @@ def reset_game_state():
     current_hat = None
 
     start_time = None
+    current_prompt = None
+    prompt_start_time = None
     
 '''
 The following block of code is the main game loop for the game, which is repsonsible for the current page/ state of the game
@@ -554,11 +585,13 @@ def main():
     global closet_open, menu_x, shirts_open, pants_open, shoes_open, hats_open
     global current_shirt, current_pants, current_shoes, current_hat
     global start_time, timer_enabled, time_limit
+    global current_prompt, prompt_start_time, prompt_duration
 
     running = True
     clock = pygame.time.Clock()
 
     while running:
+        # --------- EVENT HANDLING ---------
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -584,6 +617,7 @@ def main():
 
             # professor selection page
             elif current_page == prof_page:
+                # build buttons for click detection
                 prof_buttons = []
                 x_start = 160
                 y_start = 420
@@ -592,12 +626,18 @@ def main():
                     prof_buttons.append(button)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    for i in range(len(prof_buttons)):
-                        if prof_buttons[i].is_clicked(event):
+                    for i, button in enumerate(prof_buttons):
+                        if button.is_clicked(event):
                             selected_prof = prof_list[i]
+
+                            # start mannequin timer
                             start_time = pygame.time.get_ticks()
                             ranking_score = None
                             current_page = mannequin_page
+
+                            # start prompt timer and choose a random prompt
+                            prompt_start_time = pygame.time.get_ticks()
+                            current_prompt = random.choice(prompt_list)
 
             # mannequin page
             elif current_page == mannequin_page:
@@ -608,52 +648,70 @@ def main():
 
                 if closet_open and event.type == pygame.MOUSEBUTTONDOWN:
                     offset = menu_x
+
                     if is_clicked_with_offset(shirts_cat_button, event, offset):
                         shirts_open = not shirts_open
                         pants_open = shoes_open = hats_open = False
+
                     if is_clicked_with_offset(pants_cat_button, event, offset):
                         pants_open = not pants_open
                         shirts_open = shoes_open = hats_open = False
+
                     if is_clicked_with_offset(shoes_cat_button, event, offset):
                         shoes_open = not shoes_open
                         shirts_open = pants_open = hats_open = False
+
                     if is_clicked_with_offset(hats_cat_button, event, offset):
                         hats_open = not hats_open
                         shirts_open = pants_open = shoes_open = False
+
                     if is_clicked_with_offset(close_closet_button, event, offset):
                         closet_open = False
                         shirts_open = pants_open = shoes_open = hats_open = False
 
+                    # clothing selection
                     if shirts_open:
                         for i, button in enumerate(shirt_buttons):
                             if is_clicked_with_offset(button, event, offset):
                                 current_shirt = shirt_list[i]
+
                     if pants_open:
                         for i, button in enumerate(pants_buttons):
                             if is_clicked_with_offset(button, event, offset):
                                 current_pants = pants_list[i]
+
                     if shoes_open:
                         for i, button in enumerate(shoes_buttons):
                             if is_clicked_with_offset(button, event, offset):
                                 current_shoes = shoes_list[i]
+
                     if hats_open:
                         for i, button in enumerate(hat_buttons):
                             if is_clicked_with_offset(button, event, offset):
                                 current_hat = hat_list[i]
 
+            # ranking page – handle Yes / No clicks
+            elif current_page == ranking_page:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if yes_button.is_clicked(event):
+                        reset_game_state()
+                    elif no_button.is_clicked(event):
+                        running = False
+
+        # --------- STATE UPDATES (NO EVENTS) ---------
         # animate sliding closet
         if closet_open:
             if menu_x > screen_width - menu_width:
-                menu_x -= 18
+                menu_x -= menu_speed
                 if menu_x < screen_width - menu_width:
                     menu_x = screen_width - menu_width
         else:
             if menu_x < screen_width:
-                menu_x += 18
+                menu_x += menu_speed
                 if menu_x > screen_width:
                     menu_x = screen_width
 
-        # drawing
+        # --------- DRAWING ---------
         if current_page == start_page:
             screen.blit(background_one, (0, 0))
             start_button.draw(screen)
@@ -681,8 +739,22 @@ def main():
         elif current_page == mannequin_page:
             screen.blit(background_four, (0, 0))
             closet_button.draw(screen)
+
+            # professor head
             if selected_prof:
                 screen.blit(selected_prof, (450, 40))
+
+            # prompt (only first 10 seconds)
+            if current_prompt is not None and prompt_start_time is not None:
+                prompt_elapsed = (pygame.time.get_ticks() - prompt_start_time) / 1000
+                if prompt_elapsed < prompt_duration:
+                    prompt_font = pygame.font.SysFont("Arial", 35)
+                    prompt_surface = prompt_font.render(current_prompt, True, BLACK)
+                    prompt_rect = prompt_surface.get_rect(center=(screen_width // 2, 300))
+                    screen.blit(prompt_surface, prompt_rect)
+                else:
+                    current_prompt = None
+                    prompt_start_time = None
 
             # timer display
             if timer_enabled and start_time is not None:
@@ -696,7 +768,7 @@ def main():
                     current_page = ranking_page
                     start_time = None
 
-            # clothing overlays
+            # clothing overlays – shirts
             if current_shirt == shirt1:
                 screen.blit(current_shirt, (315, 125))
             elif current_shirt == shirt2:
@@ -712,6 +784,7 @@ def main():
             elif current_shirt == shirt7:
                 screen.blit(current_shirt, (280, 120))
 
+            # pants
             if current_pants == pants1:
                 screen.blit(current_pants, (140, 300))
             elif current_pants == pants2:
@@ -723,6 +796,7 @@ def main():
             elif current_pants == pants5:
                 screen.blit(current_pants, (300, 280))
 
+            # shoes
             if current_shoes == shoe1:
                 screen.blit(current_shoes, (407, 600))
             elif current_shoes == shoe2:
@@ -730,6 +804,7 @@ def main():
             elif current_shoes == shoe3:
                 screen.blit(current_shoes, (407, 600))
 
+            # hats
             if current_hat == hat1:
                 screen.blit(current_hat, (457, 20))
             elif current_hat == hat2:
@@ -757,39 +832,30 @@ def main():
                 if hats_open:
                     for button in hat_buttons:
                         draw_button_with_offset(button, menu_x)
-                        
-                        # ranking page – handle Yes / No clicks here
-            elif current_page == ranking_page:
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if yes_button.is_clicked(event):
-                        reset_game_state()
-                    elif no_button.is_clicked(event):
-                        running = False
-                        
+
         elif current_page == ranking_page:
             screen.blit(background_ranking, (0, 0))
-            # draw the score (centered a bit higher)
+
+            # score
             if ranking_score is not None:
                 num_font = pygame.font.SysFont("Arial", 80)
                 score_text = num_font.render(str(ranking_score), True, BLACK)
                 score_rect = score_text.get_rect(center=(screen_width // 2, 220))
                 screen.blit(score_text, score_rect)
-            # draw the "Do you want to play again?" text
+
+            # play again text
             prompt_font = pygame.font.SysFont("Arial", 40)
             prompt_text = prompt_font.render("Do you want to play again?", True, BLACK)
             prompt_rect = prompt_text.get_rect(center=(screen_width // 2, 330))
             screen.blit(prompt_text, prompt_rect)
-            # draw the Yes / No buttons
+
+            # buttons
             yes_button.draw(screen)
             no_button.draw(screen)
-            if yes_button.is_clicked(event):
-                reset_game_state()
-            elif no_button.is_clicked(event):
-                running = False
-                
+
         pygame.display.update()
         clock.tick(40)
-    
+
     pygame.quit()
     sys.exit()
         
