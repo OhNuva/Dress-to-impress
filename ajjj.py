@@ -98,8 +98,6 @@ female_profs = [pendar, comfort, mary]
 female_names = ["Pendar Mahmoudi", "Comfort Mintah", "Mary Wells"]
 male_profs = [michael, jordan, boxin]
 male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
-<<<<<<< HEAD
-=======
 '''
 The following will provide a list of clothing graphics that will be used for character customization during the game.
 All uplaods are loaded from the Images/ or images/ directory and scaled to consistent sizes for display.
@@ -135,7 +133,6 @@ shirt6 = pygame.image.load("Images/shirt6.png")
 shirt6 = pygame.transform.scale(shirt6, (460, 300))
 shirt7 = pygame.image.load("Images/shirt7.png")
 shirt7 = pygame.transform.scale(shirt7, (460, 300))
->>>>>>> 55b1fd1bbbadc598faf396ab0c9cda6f39627a6d
 
 # clothing images
 shirt1 = pygame.image.load("Images/shirt1.png"); shirt1 = pygame.transform.scale(shirt1, (385, 300))
