@@ -362,6 +362,33 @@ pants_buttons = []
 shoes_buttons = []
 hat_buttons = []
 
+'''
+The following block of code generates and positions clothing item buttons for shirts, pants, shoes, hats in a
+two-column grid layout inside the closet interface.
+
+Each button is given the same statring positions, denoted by item_x_start and item_y_start, and these buttons are then offset using item_x_gap and item_y_gap.
+
+Loops are used to create a button for every item in the respective clothing list (shirts, pants, hats or shoes). 
+The button column is determined by 'i % 2' for i in each respective list, so that if i is even the button will be sorted into the left column and if i is odd it will be
+sorted into the right column.
+The button row is then determined by '1//2', so that after every two items, the following button will move down to the next row, giving two buttons per row. 
+
+The row and column of each button is then converted into on-screen coordinates using the given starting x and y positions and x and y offsets. 
+The buttons are then created with their respective size (which varies depending on clothing type) and images, and these buttonsare appended to the corresponding 
+category button list. 
+
+Each clothing category has its own list (shirt_list, pants_list, etc.).
+For each item in the list:
+
+
+Example
+>>>If shirt_list has 4 items, the shirts are placed as:
+
+    (20, 280)      (180, 280)
+    (20, 460)      (180, 460)
+
+'''
+
 # positions for closet items
 item_x_start = 20
 item_y_start = 280
@@ -412,6 +439,25 @@ pants_open = False
 shoes_open = False
 hats_open = False
 
+'''
+The following functions are utility functions that temporarily visually shift a button and check to see if the space where the shifted button occupies is clicked.
+This essentially mimics the effect of actually shifting and moving every button, allowing the buttons to still be clickable, but without the additional complications this would cause.
+
+draw_button_with_offset(button, offset_y) draws the existing button with a horizontal offset of offset_y and then restores it to its original position. \
+This will be used to visually shift buttons when the clost panel slides.
+
+is_clicked_with_offset(button,event,offset_y) checks to see if the visually shifted button is clicked on and uses the same offset_y as in draw_button_with_offset so the
+clickable area matches what the player sees. 
+
+>>>Closet panel is slid 200 pixels to the right
+for b in shirt_buttons:
+    draw_button_with_offset(b, offset_x=200)
+
+>>>Detect clicks in the shifted closet
+if is_clicked_with_offset(shirt_buttons[0], event, offset_x=200):
+    print("Shirt 1 selected!")
+'''
+
 def draw_button_with_offset(button, offset_y):
     old_x = button.rect.x
     button.rect.x += offset_y
@@ -424,6 +470,12 @@ def is_clicked_with_offset(button, event, offset_y):
     clicked = button.is_clicked(event)
     button.rect.x = old_x
     return clicked
+
+'''
+Resets all global game variables to their default state.
+>>> This function clears the current gameplay progress and returns the user to the gender selection page. It resets the selected professor, 
+ranking score, clothing selections, closet/menu states, and any active timers.
+'''
 
 def reset_game_state():
     global current_page, ranking_score, selected_prof, prof_list, prof_names
@@ -452,6 +504,52 @@ def reset_game_state():
     current_hat = None
 
     start_time = None
+    
+'''
+The following block of code is the main game loop for the game, which is repsonsible for the current page/ state of the game
+all event handling, and drawing all user interface elements/ images/ clothing overlays.
+
+>>>Game States
+The game uses 'current_page' to switch between screens by setting the variable equal to different things.
+
+If current_page= start_page, the game displays the backgroun image and start/exit buttons. If the start button
+is clicked, the game continues to the next page: 'gender_page' and if the exit button is clicked the game exits.
+
+If current_page=gender_page, the game displays buttons for either female or male character selection.
+The game will then be directed to the prof_page, which will display a set of professor buttons based on the gender that was selected.
+Clicking one of these buttons sets 'selected_prof' and moves on to the mannequin_page. 
+
+If current_page=mannequin_page then the game will display the mannequin with the selected professor's head.
+This page also includes the sliding closet panel containing all clothing types: shirts, pants, shoes, hats.
+On this page players can open and close the closet and choose clothing items which are drawn onto the mannequin
+using current_shirt, current_pants, current_shoes, current_hat. 
+
+If current_page=ranking+page, the game will display a random score from 1-10 when the ranking button is pressed.
+This page uses the 'random.randint()' function and is enabled because 'random' was imported at the beginning of the code.
+
+>>>Event Handling
+All pygame events are processed inside a single event loop. 
+The events for each page are as follows: 
+    start_page: start and exit buttons
+    gender_page: male and female selection 
+    prof_page: professor button selection 
+    mannequin_page: open/close the closet, category selection (shirts, pants, shoes, hats),
+    selecting individual clothing items, and uses 'is_clicked_with_offset()'to handle clicks on a sliding menu. 
+    
+>>>Sliding Closet Menu
+When the sliding closet panel opens, category buttons and clothing buttons are drawn using the 'draw_button_with offset()' function
+which temporarily shifts the buttons so they appear in the sliding panel. 
+
+>>>Drawing and Rendering
+Each frame depending on the current page, checks and draws the background image, buttons for that page,
+mannequin and professor head images, the currently selected clothing items, the sliding closet panel and category/ item buttns, and in the case that its 
+applicable, the ranking score. 
+
+The screen is refrshed every frame using 'pygame.display.update' and the game runs at 40 FPS 
+using 'clock.ticl(40)'.
+
+The loop ends when the user closes the window and pygame is shit down.
+'''
 
 def main():
     global current_page, ranking_score, selected_prof, prof_list, prof_names
@@ -664,21 +762,30 @@ def main():
 
         elif current_page == ranking_page:
             screen.blit(background_ranking, (0, 0))
+
+            # draw the score (centered a bit higher)
             if ranking_score is not None:
                 num_font = pygame.font.SysFont("Arial", 80)
                 score_text = num_font.render(str(ranking_score), True, BLACK)
-                screen.blit(score_text, (400, 300))
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if yes_button.is_clicked(event):
-                    reset_game_state()
-                elif no_button.is_clicked(event):
-                    running = False
+                score_rect = score_text.get_rect(center=(screen_width // 2, 220))
+                screen.blit(score_text, score_rect)
+
+            # draw the "Do you want to play again?" text
+            prompt_font = pygame.font.SysFont("Arial", 40)
+            prompt_text = prompt_font.render("Do you want to play again?", True, BLACK)
+            prompt_rect = prompt_text.get_rect(center=(screen_width // 2, 330))
+            screen.blit(prompt_text, prompt_rect)
+
+            # draw the Yes / No buttons
+            yes_button.draw(screen)
+            no_button.draw(screen)
                 
-        pygame.display.update()
-        clock.tick(40)
+    pygame.display.update()
+    clock.tick(40)
         
-        pygame.quit()
-        sys.exit()
+    # loop ended (running == False), so now quit
+    pygame.quit()
+    sys.exit()
 
 if __name__ == "__main__":
     main()
