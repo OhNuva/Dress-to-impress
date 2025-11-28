@@ -96,7 +96,7 @@ prof_names = []
 
 # Timer settings
 timer_enabled = True
-time_limit = 40
+time_limit = 35
 start_time = None
 
 '''
@@ -126,7 +126,7 @@ prompt_list = [
 
 current_prompt = None
 prompt_start_time = None
-prompt_duration = 10  # seconds
+prompt_duration = 5  # seconds
 
 '''
 The following function will create a rectangular button for the user to select. It will store the text
@@ -510,7 +510,7 @@ def reset_game_state():
     global current_shirt, current_pants, current_shoes, current_hat
     global start_time, current_prompt, prompt_start_time
 
-    # Go back to gender selection (you can change this to start_page if you prefer)
+    # Go back to gender selection
     current_page = gender_page
 
     ranking_score = None
@@ -591,7 +591,7 @@ def main():
     clock = pygame.time.Clock()
 
     while running:
-        # --------- EVENT HANDLING ---------
+        # event handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -698,8 +698,7 @@ def main():
                     elif no_button.is_clicked(event):
                         running = False
 
-        # --------- STATE UPDATES (NO EVENTS) ---------
-        # animate sliding closet
+        # animated closet door
         if closet_open:
             if menu_x > screen_width - menu_width:
                 menu_x -= menu_speed
@@ -711,7 +710,7 @@ def main():
                 if menu_x > screen_width:
                     menu_x = screen_width
 
-        # --------- DRAWING ---------
+        # start page
         if current_page == start_page:
             screen.blit(background_one, (0, 0))
             start_button.draw(screen)
@@ -750,9 +749,19 @@ def main():
                 if prompt_elapsed < prompt_duration:
                     prompt_font = pygame.font.SysFont("Arial", 35)
                     prompt_surface = prompt_font.render(current_prompt, True, BLACK)
+                    # center prompt near the top of the screen
                     prompt_rect = prompt_surface.get_rect(center=(screen_width // 2, 300))
+
+                    # draw white background behind the text
+                    padding_x = 20
+                    padding_y = 10
+                    bg_rect = prompt_rect.inflate(padding_x, padding_y)
+                    pygame.draw.rect(screen, WHITE, bg_rect)
+
+                    # now draw the text on top
                     screen.blit(prompt_surface, prompt_rect)
                 else:
+                    # hide prompt after time is up
                     current_prompt = None
                     prompt_start_time = None
 
@@ -768,7 +777,7 @@ def main():
                     current_page = ranking_page
                     start_time = None
 
-            # clothing overlays – shirts
+            # shirts
             if current_shirt == shirt1:
                 screen.blit(current_shirt, (315, 125))
             elif current_shirt == shirt2:
