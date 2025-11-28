@@ -5,16 +5,51 @@ import random
 pygame.init()
 pygame.mixer.init()
 
+'''
+The following will provide the music audio that will be played throughout the game. 
+'''
+
 # Load background music
 pygame.mixer.music.load("Music/game_sound.mp3")
 pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1)
+
+'''
+The following will provide the standard aspects of the game, particularly the screen configuration. 
+>>> screen_width : int
+The width of the application window in pixels.
+>>> screen_height : int
+The height of the application window in pixels.
+>>> screen : pygame. Surface
+The main display surface returned by the function. #all drawing operations are rendered onto this surface.
+'''
 
 # screen size
 screen_width = 1024
 screen_height = 768
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Professor Dress-Up Game")
+
+'''
+The following will  provide the colour constraints and backgrounds that will be used throughout the course of the game.
+>>> WHITE : tuple[int, int, int]
+Standard white color (255, 255, 255).
+>>> BLACK : tuple[int, int, int]
+Standard black color (0, 0, 0).
+>>> GRAY : tuple[int, int, int]
+Gray used for default button color (150, 150, 150).
+>>> LIGHT_GRAY : tuple[int, int, int]
+Light gray used for button hover effects (200, 200, 200).
+>>> RED : tuple[int, int, int]
+Standard red color (255, 0, 0).
+>>> background_one : pygame. Surface
+>>> background_two : pygame. Surface
+>>> background_three : pygame. Surface
+>>> background_four : pygame. Surface
+>>> background_ranking : pygame. Surface
+Background images that will be used for various screens in the game.
+#Each image is loaded from the Images/ directory and scaled to match the screen dimensions (`screen_width` × `screen_height`).
+'''
 
 # colours
 WHITE = (255, 255, 255)
@@ -35,6 +70,23 @@ background_four = pygame.transform.scale(background_four, (screen_width, screen_
 background_ranking = pygame.image.load("Images/background_ranking.png")
 background_ranking = pygame.transform.scale(background_ranking, (screen_width, screen_height))
 
+'''
+The following will define the variables needed in order for the game to perform properly.
+>>> ranking_score : int or None
+Stores the users ranking score. #Initialized to None until a score is calculated.
+>>> current_page : str
+A string representing the current screen (e.g., "start", "menu", "results"). Defaults to "start".
+>>> selected_prof : object or None
+Holds the selected character. None means no profile has been chosen.
+>>> prof_list : list
+A list containing all professor names available to be selected in the game.
+>>> prof_names : list
+A list of professor names (strings).
+>>> timer_enabled : bool
+>>> timer_limit : int
+A timer of 40 seconds will be incorporated into the game.
+'''
+
 # game state variables
 ranking_score = None
 current_page = "start"
@@ -46,6 +98,25 @@ prof_names = []
 timer_enabled = True
 time_limit = 40
 start_time = None
+
+'''
+The following function will create a rectangular button for the user to select. It will store the text
+in an Arial font and optionally stores an image that will be displayed above the text.
+>>> x : int
+The x-coordinate of the top-left corner of the button. #The same is to be said of the y, w, and h
+>>> text : str
+The text displayed on the button.
+>>> font : pygame
+The font used to render button text.
+>>> image : pygame. Surface, optional
+Optional image #image will be scaled proportionally to fit inside the button without distortion
+>>> rect : pygame
+Rectangular area #of the button used for drawing and collision.
+>>> draw(surface):
+Draws the button onto the given surface, applying hover colour(s), scaling the image to fit, and placing text near the bottom.
+>>>is_clicked(event):
+Returns True if the user pressed the mouse button while the cursor was inside the button.
+'''
 
 # Button class
 class Button:
@@ -73,11 +144,45 @@ class Button:
     def is_clicked(self, event):
         return event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos)
 
+'''
+The following will produce buttons that will be used throughout the game.
+>>> ranking_button : Button
+Used to illustrate the score of the outfit #(300, 400) with 200×50 pixels.
+>>> start_button : Button
+Navigates to the next screen, beginning the game, #positioned at (250, 250).
+>>> exit_button : Button
+Closes the game when clicked, #postitioned at (470, 250) with 200×50 pixels.
+>>> male_button : Button
+Allows users to select a male character, #positioned at (200, 250) with 180×50 pixels.
+>>> female_button : Button
+Allows users to select a female character, #positioned at (420, 250) with 180×50 pixels.
+>>> yes_button : Button
+Allows users to select yes when prompted to play again, #positioned at ()
+>>> no_button : Button
+Allows users to select no when prompted to play again, 
+'''
+
 # UI buttons
 start_button = Button(300, 500, 200, 50, "Start")
 exit_button = Button(520, 500, 200, 50, "Exit")
 male_button = Button(320, 450, 180, 50, "Male")
 female_button = Button(540, 450, 180, 50, "Female")
+yes_button = Button(300, 500, 200, 50, "Yes")
+no_button = Button(520, 500, 200, 50, "No")
+
+'''
+The following are strings that introduce and represent various game pages that will be used throughout the game.
+>>> start_page : str
+The initial "start" screen.
+>>> gender_page : str
+The page where the user selects a gender option (Male/Female).
+>>> prof_page : str
+The professor selection page, where the user chooses from available professor avatars.
+>>> mannequin_page : str
+The page containing the outfit customization interface.
+>>> ranking_page : str
+The page that displays ranking results.
+'''
 
 # pages
 start_page = "start"
@@ -85,6 +190,24 @@ gender_page = "gender"
 prof_page = "prof_selection"
 mannequin_page = "mannequin"
 ranking_page = "ranking"
+
+'''
+The following displays the professor avatars that may be chosen and the associated name of the professor.
+Each professor image is loaded from the `images/` directory and scaled to
+100×100 pixels for menu display.
+>>> pendar : pygame. Surface #female professor example
+Uploads a cartoon image of Professor Pendar Mahmoudi.
+>>> michael : pygame. Surface #male professor example
+Uploads a cartoon image of Professor Michael Tam.
+>>> female_profs : list[pygame.Surface]
+List of female professor images.
+>>> female_names : list[str]
+List of names associated with each image.
+>>> male_profs : list[pygame.Surface]
+List of male professor images.
+>>> male_names : list[str]
+List of corresponding names for each image.
+'''
 
 # professor images
 pendar = pygame.image.load("Images/pendar_cartoon_trans.png"); pendar = pygame.transform.scale(pendar, (110, 110))
@@ -98,6 +221,7 @@ female_profs = [pendar, comfort, mary]
 female_names = ["Pendar Mahmoudi", "Comfort Mintah", "Mary Wells"]
 male_profs = [michael, jordan, boxin]
 male_names = ["Michael Tam", "Jordan Hamilton", "Boxin Zhao"]
+
 '''
 The following will provide a list of clothing graphics that will be used for character customization during the game.
 All uplaods are loaded from the Images/ or images/ directory and scaled to consistent sizes for display.
@@ -162,11 +286,37 @@ pants_list = [pants1, pants2, pants3, pants4, pants5]
 shoes_list = [shoe1, shoe2, shoe3]
 hat_list = [hat1, hat2, hat3]
 
+'''
+The following will store the selected clothing items. This storage helps determine which shirt, pants, shoes, and hat are displayed
+during the customization process.
+>>> current_shirt : pygame. Surface or None
+Displays the shirt currently selected for the mannequin. None means no shirt has been selected.
+>>> current_pants : pygame. Surface or None
+Displays the pants currently selected for the mannequin. None means no pants have been selected.
+>>> current_shoes : pygame. Surface or None
+Displays the shoes currently selected for the mannequin. None means no shoes have been selected.
+>>> current_hat : pygame. Surface or None
+Displays the hat currently selected for the mannequin. None means no hat has been selected.
+'''
+
 # selected clothing
 current_shirt = None
 current_pants = None
 current_shoes = None
 current_hat = None
+
+'''
+The following will control the animation of the sliding closet menu used in the customization screen. The menu slides down from
+the top of the window when opened, and retracts when closed.
+>>> closet_open : bool
+Indicates whether the closet menu is open (True) or closed (False).
+>>> menu_height : int
+The height of the closet menu in pixels.
+>>> menu_y : int
+The vertical position of the menu. #initialized to menu_height so it starts offscreen above the top edge.
+>>> menu_speed : int
+The number of pixels the menu moves per frame during sliding animations. #Higher values make the menu open/close faster.
+'''
 
 # closet sliding menu
 closet_open = False
@@ -175,6 +325,29 @@ menu_y = -menu_height
 menu_speed = 18
 menu_width = 350
 menu_x = screen_width
+
+'''
+The following indicates the buttons that will be used for interacting with the sliding closet menu and the lists that will
+store item buttons for each clothing type.
+>>> closet_button : type(button)
+The main toggle button that opens or closes the closet menu, #positioned at (650, 20) with 120×40 pixels.
+>>> shirts_cat_button : type(button)
+Displays the shirt category inside the closet menu, #positioned at (40, 10) relative to the top of the closet.
+>>> pants_cat_button : type(button)
+Displays the pants category inside the closet menu, #positioned at (220, 10) relative to the top of the closet.
+>>> shoes_cat_button : type(button)
+Displays the shoe category inside the closet menu, #positioned at (400, 10) relative to the top of the closet.
+>>> hats_cat_button : type(button)
+Displays the hat category inside the closet menu, #positioned at (40, 10) relative to the top of the closet.
+>>> shirt_buttons : list[Button]
+Will hold buttons representing each available shirt option.
+>>> pants_buttons : list[Button]
+Will hold buttons representing each available pair of pants.
+>>> shoes_buttons : list[Button]
+Will hold buttons for all available shoe options.
+>>> hat_buttons : list[Button]
+Will hold buttons for all available hat options.
+'''
 
 # closet category buttons
 closet_button = Button(35, 35, 140, 50, "Closet")
@@ -251,6 +424,34 @@ def is_clicked_with_offset(button, event, offset_y):
     clicked = button.is_clicked(event)
     button.rect.x = old_x
     return clicked
+
+def reset_game_state():
+    global current_page, ranking_score, selected_prof, prof_list, prof_names
+    global closet_open, menu_x, shirts_open, pants_open, shoes_open, hats_open
+    global current_shirt, current_pants, current_shoes, current_hat
+    global start_time
+
+    # Go back to gender selection (you can change this to start_page if you prefer)
+    current_page = gender_page
+
+    ranking_score = None
+    selected_prof = None
+    prof_list = []
+    prof_names = []
+
+    closet_open = False
+    menu_x = screen_width
+    shirts_open = False
+    pants_open = False
+    shoes_open = False
+    hats_open = False
+
+    current_shirt = None
+    current_pants = None
+    current_shoes = None
+    current_hat = None
+
+    start_time = None
 
 def main():
     global current_page, ranking_score, selected_prof, prof_list, prof_names
@@ -464,14 +665,20 @@ def main():
         elif current_page == ranking_page:
             screen.blit(background_ranking, (0, 0))
             if ranking_score is not None:
-                num_font = pygame.font.SysFont("Arial", 40)
-                score_text = num_font.render(str(ranking_score), True, RED)
-                screen.blit(score_text, (480, 350))
-
+                num_font = pygame.font.SysFont("Arial", 80)
+                score_text = num_font.render(str(ranking_score), True, BLACK)
+                screen.blit(score_text, (400, 300))
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if yes_button.is_clicked(event):
+                    reset_game_state()
+                elif no_button.is_clicked(event):
+                    running = False
+                
         pygame.display.update()
         clock.tick(40)
-
-    pygame.quit()
+        
+        pygame.quit()
+        sys.exit()
 
 if __name__ == "__main__":
     main()
