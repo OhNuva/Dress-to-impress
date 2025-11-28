@@ -543,6 +543,7 @@ The loop ends when the user closes the window and pygame is shit down.
 
 # main loop
 #AD: This one should get its own. It should be detailed, but don't stress. It doesn't have to be excessive. The only thing I wouldn't include is the clock countdown, the quit part at the end, and name=main :)
+
 def main():
     global current_page, ranking_score, selected_prof, prof_list, prof_names
     global closet_open, menu_y, menu_x, menu_width, shirts_open, pants_open, shoes_open, hats_open
@@ -550,9 +551,14 @@ def main():
 
     running = True
     clock = pygame.time.Clock()
-
+    
+    #Timer Variables
+    timer_started= False
+    start_time= 0 
+    time_limit=60 #seconds
+    
     while running:
-        # event loop - single loop only (no nested event.get)
+        elapsed= 0 
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -613,7 +619,7 @@ def main():
                     if not closet_open:
                         shirts_open = pants_open = shoes_open = hats_open = False
 
-                #check is the closet menu is open
+                #check if the closet menu is open
                 if closet_open and event.type == pygame.MOUSEBUTTONDOWN:
                     #compute current offset (menu_x)
                     offset = menu_x
@@ -723,7 +729,7 @@ def main():
 
             #prof head on the maniquine
             if selected_prof:
-                screen.blit(selected_prof, (447, 180))
+                screen.blit(selected_prof, (450, 40))
 
             #positions of clothing to manquine
             #shirt
