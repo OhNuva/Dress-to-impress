@@ -249,11 +249,11 @@ Contains all available hat options.
 '''
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
-shirt1 = pygame.transform.scale(shirt1, (375, 300))
+shirt1 = pygame.transform.scale(shirt1, (385, 300))
 shirt2 = pygame.image.load("Images/shirt2.png")
-shirt2 = pygame.transform.scale(shirt2, (375, 300))
+shirt2 = pygame.transform.scale(shirt2, (450, 300))
 shirt3 = pygame.image.load("Images/shirt3.png")
-shirt3 = pygame.transform.scale(shirt3, (375, 300))
+shirt3 = pygame.transform.scale(shirt3, (450, 300))
 shirt4 = pygame.image.load("Images/shirt4.png")
 shirt4 = pygame.transform.scale(shirt4, (375, 300))
 shirt5 = pygame.image.load("Images/shirt5.png")
@@ -732,11 +732,11 @@ def main():
             #positions of clothing to manquine
             #shirt
             if current_shirt == shirt1:
-                screen.blit(current_shirt, (320, 125))
+                screen.blit(current_shirt, (315, 125))
             if current_shirt == shirt2:
-                screen.blit(current_shirt, (300, 125))
+                screen.blit(current_shirt, (283, 125))
             if current_shirt == shirt3:
-                screen.blit(current_shirt, (300, 125))
+                screen.blit(current_shirt, (282, 120))
             if current_shirt == shirt4:
                 screen.blit(current_shirt, (300, 125))
             if current_shirt == shirt5:
