@@ -376,7 +376,7 @@ Will hold buttons for all available hat options.
 '''
 
 # Create closet and category buttons (positions will be used with offset)
-closet_button = Button(420, 500, 140, 50, "Closet")
+closet_button = Button(35, 35, 140, 50, "Closet")
 # category buttons inside closet (y is relative to closet top)
 shirts_cat_button = Button(20, 20, 140, 40, "Shirts")
 pants_cat_button = Button(20, 70, 140, 40, "Pants")
