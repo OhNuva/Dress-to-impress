@@ -733,8 +733,25 @@ def main():
 
             #positions of clothing to manquine
             #shirt
+<<<<<<< HEAD
             if current_shirt:
                 screen.blit(current_shirt, (320, 125)) 
+=======
+            if current_shirt == shirt1:
+                screen.blit(current_shirt, (315, 125))
+            if current_shirt == shirt2:
+                screen.blit(current_shirt, (283, 125))
+            if current_shirt == shirt3:
+                screen.blit(current_shirt, (282, 120))
+            if current_shirt == shirt4:
+                screen.blit(current_shirt, (299, 135))
+            if current_shirt == shirt5:
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt6:
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt7:
+                screen.blit(current_shirt, (300, 125))
+>>>>>>> 8a82e1dffe0981d6c1ddd951f45b6b953e0b245c
             #pants
             if current_pants:
                 screen.blit(current_pants, (412, 440))
