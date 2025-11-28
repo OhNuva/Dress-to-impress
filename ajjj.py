@@ -253,43 +253,43 @@ shirt1 = pygame.transform.scale(shirt1, (385, 300))
 shirt2 = pygame.image.load("Images/shirt2.png")
 shirt2 = pygame.transform.scale(shirt2, (450, 300))
 shirt3 = pygame.image.load("Images/shirt3.png")
-shirt3 = pygame.transform.scale(shirt3, (450, 300))
+shirt3 = pygame.transform.scale(shirt3, (455, 300))
 shirt4 = pygame.image.load("Images/shirt4.png")
 shirt4 = pygame.transform.scale(shirt4, (420, 300))
 shirt5 = pygame.image.load("Images/shirt5.png")
-shirt5 = pygame.transform.scale(shirt5, (375, 300))
+shirt5 = pygame.transform.scale(shirt5, (365, 300))
 shirt6 = pygame.image.load("Images/shirt6.png")
-shirt6 = pygame.transform.scale(shirt6, (375, 300))
+shirt6 = pygame.transform.scale(shirt6, (460, 300))
 shirt7 = pygame.image.load("Images/shirt7.png")
-shirt7 = pygame.transform.scale(shirt7, (375, 300))
+shirt7 = pygame.transform.scale(shirt7, (460, 300))
 
 #pants_png
 pants1 = pygame.image.load("Images/pants1.png")
-pants1 = pygame.transform.scale(pants1, (150, 150))
+pants1 = pygame.transform.scale(pants1, (742, 400))
 pants2 = pygame.image.load("Images/pants2.png")
-pants2 = pygame.transform.scale(pants2, (150, 150))
+pants2 = pygame.transform.scale(pants2, (315, 350))
 pants3 = pygame.image.load("Images/pants3.png")
-pants3 = pygame.transform.scale(pants3, (150, 150))
+pants3 = pygame.transform.scale(pants3, (370, 350))
 pants4 = pygame.image.load("Images/pants4.png")
-pants4 = pygame.transform.scale(pants4, (150, 150))
+pants4 = pygame.transform.scale(pants4, (380, 300))
 pants5 = pygame.image.load("Images/pants5.png")
-pants5 = pygame.transform.scale(pants5, (150, 150))
+pants5 = pygame.transform.scale(pants5, (380, 350))
 
 #shoes_png
 shoe1 = pygame.image.load("Images/shoe1.png")
-shoe1 = pygame.transform.scale(shoe1, (150, 70))
+shoe1 = pygame.transform.scale(shoe1, (200, 100))
 shoe2 = pygame.image.load("Images/shoe2.png")
-shoe2 = pygame.transform.scale(shoe2, (150, 70))
+shoe2 = pygame.transform.scale(shoe2, (200, 100))
 shoe3 = pygame.image.load("Images/shoe3.png")
-shoe3 = pygame.transform.scale(shoe3, (150, 70))
+shoe3 = pygame.transform.scale(shoe3, (200, 100))
 
 #hats_png
 hat1 = pygame.image.load("Images/hat1.png")
-hat1 = pygame.transform.scale(hat1, (120, 80))
+hat1 = pygame.transform.scale(hat1, (95, 70))
 hat2 = pygame.image.load("Images/hat2.png")
-hat2 = pygame.transform.scale(hat2, (120, 80))
+hat2 = pygame.transform.scale(hat2, (95, 70))
 hat3 = pygame.image.load("Images/hat3.png")
-hat3 = pygame.transform.scale(hat3, (120,80))
+hat3 = pygame.transform.scale(hat3, (95, 70))
 
 #lists of clothes
 shirt_list = [shirt1, shirt2, shirt3, shirt4, shirt5, shirt6, shirt7]
@@ -424,12 +424,14 @@ item_x_start = 20
 item_y_start = 280
 item_gap_x = 160
 item_gap_y = 180
+item_gap_y_shirt=120
+
 #shirts
 for i in range(len(shirt_list)):
     col = i % 2
     row = i // 2
     x = item_x_start + col * item_gap_x
-    y = item_y_start + row * item_gap_y
+    y = item_y_start + row * item_gap_y_shirt
     button = Button(x, y, 110, 110, f"S{i+1}", image=shirt_list[i])
     shirt_buttons.append(button)
 #pants
@@ -740,36 +742,36 @@ def main():
             if current_shirt == shirt4:
                 screen.blit(current_shirt, (299, 135))
             if current_shirt == shirt5:
-                screen.blit(current_shirt, (300, 125))
+                screen.blit(current_shirt, (324, 130))
             if current_shirt == shirt6:
-                screen.blit(current_shirt, (300, 125))
+                screen.blit(current_shirt, (280, 120))
             if current_shirt == shirt7:
-                screen.blit(current_shirt, (300, 125))
+                screen.blit(current_shirt, (280, 120))
             #pants
             if current_pants == pants1:
-                screen.blit(current_pants, (412, 400))
+                screen.blit(current_pants, (140, 300))
             if current_pants == pants2:
-                screen.blit(current_pants, (412, 400))
+                screen.blit(current_pants, (358, 330))
             if current_pants == pants3:
-                screen.blit(current_pants, (412, 400))
+                screen.blit(current_pants, (328, 295))
             if current_pants == pants4:
-                screen.blit(current_pants, (412, 400))
+                screen.blit(current_pants, (328, 330))
             if current_pants == pants5:
-                screen.blit(current_pants, (412, 400))
+                screen.blit(current_shirt, (328, 330))
             #shoes
             if current_shoes == shoe1:
-                screen.blit(current_shoes, (422, 580))
+                screen.blit(current_shoes, (407, 600))
             if current_shoes == shoe2:
-                screen.blit(current_shoes, (422, 580))
+                screen.blit(current_shoes, (407, 600))
             if current_shoes == shoe3:
-                screen.blit(current_shoes, (422, 580))
+                screen.blit(current_shoes, (407, 600))
             #hat
             if current_hat == hat1:
-                screen.blit(current_hat, (452, 120))
+                screen.blit(current_hat, (457, 20))
             if current_hat == hat2:
-                screen.blit(current_hat, (412, 400))
+                screen.blit(current_hat, (457, 20))
             if current_hat == hat3:
-                screen.blit(current_hat, (412, 400)) 
+                screen.blit(current_hat, (457, 15))   
 
             #sliding closet side panel
             if closet_open or menu_x < screen_width:
