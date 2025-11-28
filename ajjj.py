@@ -734,16 +734,42 @@ def main():
             if current_shirt == shirt1:
                 screen.blit(current_shirt, (320, 125))
             if current_shirt == shirt2:
-                screen.blit(current_shirt,(300, 125))
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt3:
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt4:
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt5:
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt6:
+                screen.blit(current_shirt, (300, 125))
+            if current_shirt == shirt7:
+                screen.blit(current_shirt, (300, 125))
             #pants
-            if current_pants:
-                screen.blit(current_pants, (412, 440))
+            if current_pants == pants1:
+                screen.blit(current_pants, (412, 400))
+            if current_pants == pants2:
+                screen.blit(current_pants, (412, 400))
+            if current_pants == pants3:
+                screen.blit(current_pants, (412, 400))
+            if current_pants == pants4:
+                screen.blit(current_pants, (412, 400))
+            if current_pants == pants5:
+                screen.blit(current_pants, (412, 400))
             #shoes
-            if current_shoes:
+            if current_shoes == shoe1:
+                screen.blit(current_shoes, (422, 580))
+            if current_shoes == shoe2:
+                screen.blit(current_shoes, (422, 580))
+            if current_shoes == shoe3:
                 screen.blit(current_shoes, (422, 580))
             #hat
-            if current_hat:
-                screen.blit(current_hat, (452, 120))   
+            if current_hat == hat1:
+                screen.blit(current_hat, (452, 120))
+            if current_hat == hat2:
+                screen.blit(current_hat, (412, 400))
+            if current_hat == hat3:
+                screen.blit(current_hat, (412, 400)) 
 
             #sliding closet side panel
             if closet_open or menu_x < screen_width:
