@@ -248,11 +248,7 @@ Contains all available hat options.
 '''
 #shirts_png
 shirt1 = pygame.image.load("Images/shirt1.png")
-<<<<<<< Updated upstream
 shirt1 = pygame.transform.scale(shirt1, (385, 300))
-=======
-shirt1 = pygame.transform.scale(shirt1, (200, 200))
->>>>>>> Stashed changes
 shirt2 = pygame.image.load("Images/shirt2.png")
 shirt2 = pygame.transform.scale(shirt2, (450, 300))
 shirt3 = pygame.image.load("Images/shirt3.png")
