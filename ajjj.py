@@ -553,12 +553,8 @@ def main():
     clock = pygame.time.Clock()
     
     #Timer Variables
-    timer_started= False
-    start_time= 0 
-    time_limit=60 #seconds
     
     while running:
-        elapsed= 0 
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
