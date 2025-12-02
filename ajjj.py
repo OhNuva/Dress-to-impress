@@ -470,7 +470,7 @@ hats_open = False
 The following functions are utility functions that temporarily visually shift a button and check to see if the space where the shifted button occupies is clicked.
 This essentially mimics the effect of actually shifting and moving every button, allowing the buttons to still be clickable, but without the additional complications this would cause.
 
-draw_button_with_offset(button, offset_y) draws the existing button with a horizontal offset of offset_y and then restores it to its original position. \
+draw_button_with_offset(button, offset_y) draws the existing button with a horizontal offset of offset_y and then restores it to its original position.
 This will be used to visually shift buttons when the clost panel slides.
 
 is_clicked_with_offset(button,event,offset_y) checks to see if the visually shifted button is clicked on and uses the same offset_y as in draw_button_with_offset so the
@@ -499,9 +499,26 @@ def is_clicked_with_offset(button, event, offset_y):
     return clicked
 
 '''
-Resets all global game variables to their default state.
->>> This function clears the current gameplay progress and returns the user to the gender selection page. It resets the selected professor, 
-ranking score, clothing selections, closet/menu states, and any active timers.
+The following will reset the all global game variables to their default state, returning the game to the gender selection screen.
+>>> The following components are reset:
+    Navigation/Page State
+    # current_page: set back to the gender selection screen.
+    Ranking and Professor Selection
+    # ranking_score: cleared (None).
+    # selected_prof: cleared (None).
+    # prof_list: emptied (no available professors loaded).
+    # prof_names: emptied (no professor names loaded).
+    Closet and Menu States
+    # closet_open: set to False.
+    # menu_x: reset to screen_width (off-screen position for sliding menu).
+    # shirts_open, pants_open, shoes_open, hats_open: all set to False.
+    Clothing Selections
+    # current_shirt, current_pants, current_shoes, current_hat: all cleared (None).
+    Timer and Prompt System
+    # start_time: reset to None.
+    # current_prompt: cleared (None).
+    # prompt_start_time: reset to None.
+This function will ensure that users start with a completely fresh game state when they choose to play again.
 '''
 
 def reset_game_state():
@@ -535,49 +552,30 @@ def reset_game_state():
     prompt_start_time = None
     
 '''
-The following block of code is the main game loop for the game, which is repsonsible for the current page/ state of the game
-all event handling, and drawing all user interface elements/ images/ clothing overlays.
-
->>>Game States
-The game uses 'current_page' to switch between screens by setting the variable equal to different things.
-
-If current_page= start_page, the game displays the backgroun image and start/exit buttons. If the start button
-is clicked, the game continues to the next page: 'gender_page' and if the exit button is clicked the game exits.
-
-If current_page=gender_page, the game displays buttons for either female or male character selection.
-The game will then be directed to the prof_page, which will display a set of professor buttons based on the gender that was selected.
-Clicking one of these buttons sets 'selected_prof' and moves on to the mannequin_page. 
-
-If current_page=mannequin_page then the game will display the mannequin with the selected professor's head.
-This page also includes the sliding closet panel containing all clothing types: shirts, pants, shoes, hats.
-On this page players can open and close the closet and choose clothing items which are drawn onto the mannequin
-using current_shirt, current_pants, current_shoes, current_hat. 
-
-If current_page=ranking+page, the game will display a random score from 1-10 when the ranking button is pressed.
-This page uses the 'random.randint()' function and is enabled because 'random' was imported at the beginning of the code.
-
->>>Event Handling
-All pygame events are processed inside a single event loop. 
-The events for each page are as follows: 
-    start_page: start and exit buttons
-    gender_page: male and female selection 
-    prof_page: professor button selection 
-    mannequin_page: open/close the closet, category selection (shirts, pants, shoes, hats),
-    selecting individual clothing items, and uses 'is_clicked_with_offset()'to handle clicks on a sliding menu. 
+The following block of code is the main game loop for the game, making it the central controller for all game behaviour. It is repsonsible for 
+event processing, page navigation, gameplay systems, the closet system, and image rendering, while managing the global statement.
+>>> Event Processing: this function handles quitting the game. It processes button clicks and mouse interactions on
+    every page of the game (Start, Gender, Professor Selection, Mannequin, Ranking). It also manages closet interactions 
+    (opening/closing, switching categories, and selecting clothing items). Laslty, it detects selections of gender, professor, outfits,
+    and replay/quit options.
+>>> Page Navigation: this function transitions from the start_page to the gender_page to the prof_page to the mannequin_page and finally
+    to the ranking_page. It switches between these pages based on user decisions and game progression.
+>>> Gameplay System: this function manages the timer system (which starts a countdown when the mannequin page begins, displays the remaining
+    time and automatically moves to the ranking page when the time ends). It is also responsible for the prompt system (which randomly selects
+    a styling prompt when the user enters the mannequin screen and displays it for a fixed duration before hiding it). Lastly, this function is
+    responsible for the ranking system, which generates a random ranking score for the outfit on a scale of 1-10 when the timer ends.
+>>> Closet System: this function controls the closet slide animation and panel placement. It also tracks which clothing categories are open (ie.
+    shirts/pants/shoes/hats). Finally, it updates the player's selected clothes.
+>>> Rendering: this function illustrates all the backgrounds/pages/prompts/buttons/timers/selected professor mannequin used throughout the game.
+    It also renders the sellected clothing items in their correct positions, and displays the ranking layout (the outfit score and the Yes/No operator
+    under the play again feature).
+>>> Global State Management: this function uses and updates the current_page, ranking_score, selected_prof, prof_list, prof_names, the closet state
+    (closet_open, menu_x, shirts_open, pants_open, shoes_open, hats_open), clothing selection (current_shirt, current_pants, current_shoes, current_hat),
+    timer variables (start_time, timer_enabled, time_limit), and the prompt variables (current_prompt, prompt_start_time, prompt_duration).
     
->>>Sliding Closet Menu
-When the sliding closet panel opens, category buttons and clothing buttons are drawn using the 'draw_button_with offset()' function
-which temporarily shifts the buttons so they appear in the sliding panel. 
-
->>>Drawing and Rendering
-Each frame depending on the current page, checks and draws the background image, buttons for that page,
-mannequin and professor head images, the currently selected clothing items, the sliding closet panel and category/ item buttns, and in the case that its 
-applicable, the ranking score. 
-
-The screen is refrshed every frame using 'pygame.display.update' and the game runs at 40 FPS 
-using 'clock.ticl(40)'.
-
-The loop ends when the user closes the window and pygame is shit down.
+This function follows its own loop behaviour. In this, the game will run at 35 FPS using pygame.time.Clock(). Each loop iteration processes events, updates animations, 
+draws the correct page, and refreshes the screen. And the loop only ends when the user quits or selects "No" on the ranking page. At this time, pygame shuts down and the
+game terminates.
 '''
 
 def main():
